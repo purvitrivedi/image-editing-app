@@ -1,0 +1,10 @@
+{
+  "python.pythonPath": "/Users/purvitrivedi/.local/share/virtualenvs/image-editing-app-bl9b_ZGW/bin/python",
+  "workbench.colorTheme": "Default Dark+",
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#2c4ef8",
+    "titleBar.activeBackground": "#2c4ef8",
+    "titleBar.inactiveBackground": "#2c4ef8",
+  },
+  "window.title": "Back-End",
+}
