@@ -123,9 +123,15 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
     ],
+<<<<<<< HEAD
     # 'DEFAULT_AUTHENTICATION_CLASSES': [
     #     'jwt_auth.authentication.JWTAuthentication'
     # ],
+=======
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'jwt_auth.authentication.JWTAuthentication'
+    ],
+>>>>>>> development
 }
 
 AUTH_USER_MODEL = 'jwt_auth.User'
