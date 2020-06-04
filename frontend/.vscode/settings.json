@@ -1,0 +1,9 @@
+{
+  "workbench.colorTheme": "Default Dark+",
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#f8952c",
+    "titleBar.activeBackground": "#f8952c",
+    "titleBar.inactiveBackground": "#f8952c",
+  },
+  "window.title": "Front-End",
+}
