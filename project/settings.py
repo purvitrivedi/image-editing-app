@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'jwt_auth',
     'images'
 ]
 
@@ -115,6 +117,18 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ],
+    # 'DEFAULT_AUTHENTICATION_CLASSES': [
+    #     'jwt_auth.authentication.JWTAuthentication'
+    # ],
+}
+
+AUTH_USER_MODEL = 'jwt_auth.User'
 
 
 # Static files (CSS, JavaScript, Images)
