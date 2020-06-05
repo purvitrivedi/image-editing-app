@@ -1,22 +1,16 @@
 import React from 'react'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
-class App extends React.Component {
+import Home from './components/common/Home'
 
-  async componentDidMount() {
-    try {
-      const res = await fetch('/api/images')
-      const json = await res.json()
-      console.log(json)
-    } catch (err) {
-      console.log(err)
-    }
-  }
-
-  render() {
-    return (
-      <h1>Hello World</h1>
-    )
-  }
+function App() {
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" component={Home} />
+      </Switch>
+    </BrowserRouter>
+  )
 }
 
 export default App
