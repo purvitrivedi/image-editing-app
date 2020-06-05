@@ -20,5 +20,4 @@ urlpatterns = [
     path('api/images/', include('images.urls')),
     path('api/admin/', admin.site.urls),
     path('api/auth/', include('jwt_auth.urls'))
-
 ]
