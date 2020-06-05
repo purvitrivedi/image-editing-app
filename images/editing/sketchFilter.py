@@ -22,7 +22,7 @@ from skimage.color import rgb2gray
 # pixel and then removes this in rows and columns until it meets a pixel of a different color
 
 def sketch(url, color):
-    
+
     image = rgb2gray(io.imread(url))
 
     edge_sobel = filters.sobel(image)
@@ -36,12 +36,6 @@ def sketch(url, color):
     output_filename = url.split('/')[6]
 
     plt.savefig(f'{output_filename}.png', bbox_inches='tight', pad_inches=0)
-    
+
     return str(output_filename)
 
-    #* Seems that we don't need to remove whitespace after all
-
-    # im = Image.open(f'{output_filename}.png')
-    # print('This Ran')
-    # im = trim(im)
-    # im.save(f'{output_filename}Pillow.png')
