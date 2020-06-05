@@ -13,6 +13,7 @@ psycopg2-binary = "*"
 pyjwt = "*"
 djangorestframework = "*"
 requests = "*"
+scikit-image = "*"
 
 [requires]
 python_version = "3.7"
