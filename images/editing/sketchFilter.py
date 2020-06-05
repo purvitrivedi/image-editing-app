@@ -2,6 +2,7 @@ from matplotlib import pyplot as plt
 plt.switch_backend('Agg')
 from skimage import filters, io
 from skimage.color import rgb2gray
+
 #Accent, Accent_r, Blues, Blues_r, BrBG, BrBG_r, BuGn, BuGn_r, BuPu, BuPu_r, CMRmap, CMRmap_r, Dark2,
 #Dark2_r, GnBu, GnBu_r, Greens, Greens_r, Greys, Greys_r, OrRd, OrRd_r, Oranges, Oranges_r, PRGn, PRGn_r,
 #Paired, Paired_r, Pastel1, Pastel1_r, Pastel2, Pastel2_r, PiYG, PiYG_r, PuBu, PuBuGn, PuBuGn_r, PuBu_r,
@@ -23,6 +24,7 @@ from skimage.color import rgb2gray
 
 def sketch(url, color):
 
+  
     image = rgb2gray(io.imread(url))
 
     edge_sobel = filters.sobel(image)

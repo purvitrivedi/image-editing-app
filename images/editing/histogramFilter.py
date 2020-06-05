@@ -3,7 +3,6 @@ from skimage import io
 from skimage.exposure import match_histograms
 
 
-
 def histogram(url, reference):
     reference = io.imread(reference)
     image = io.imread(url)

@@ -11,7 +11,7 @@ def collage(url, segments):
   out1 = color.label2rgb(labels1, img, kind='avg', bg_label=0)
 
   fig, ax = plt.subplots(nrows=1, sharex=True, sharey=True, figsize=(8, 8))
-
+  print(fig)
   ax.imshow(out1)
   ax.axis('off')
 

@@ -6,5 +6,5 @@ class ImageSerializer(serializers.ModelSerializer):
         model = Image
         fields = '__all__'
 
-    def create(self, validated_data):
-        return Image.objects.create(**validated_data)
+    #def create(self, validated_data):
+        #return Image.objects.create(**validated_data)
