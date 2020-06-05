@@ -8,6 +8,7 @@ const uploadPreset =  process.env.REACT_APP_IMAGE_UPLOAD_PRESET
 
 function Home() {
   const [imageURL, setImageURL] = React.useState('')
+  const [imageB64, setImageB64] = React.useState('')
 
   const uploadImage = async event => {
     const data = new FormData()
@@ -23,7 +24,7 @@ function Home() {
       try {
         if (imageURL !== '') {
           const res = await axios.post('/api/images/', { 'url': imageURL })
-          console.log(res.data)
+          setImageB64(res.data.image)
         }
       } catch (err) {
         console.log(err.response)
@@ -32,6 +33,8 @@ function Home() {
     postURL()
   }, [imageURL])
 
+  console.log(imageB64)
+
   return (
     <>
       <input
@@ -39,6 +42,7 @@ function Home() {
         type="file"
         onChange={uploadImage}
       />
+      <img src={imageB64} alt="upload" />
     </>
   )
 }
