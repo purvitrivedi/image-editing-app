@@ -31,7 +31,3 @@ class ImageListView(APIView):
       return Response({'image': encoded_image, 'url': new_image.data.get('url') }, status=status.HTTP_201_CREATED)
     return Response(new_image.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
-
-
-    # 'https://res.cloudinary.com/jompra/image/upload/v1590680086/kilpipiilea_mufvhi.jpg'
-    # 'https://res.cloudinary.com/jompra/image/upload/v1590684847/IMG_0316_uvhoyz.png'

@@ -1,16 +1,7 @@
-import requests
-import numpy as np
-import base64
-import urllib
-from PIL import Image, ImageChops
-import matplotlib.pyplot as plt
-
-from skimage import io
-from skimage.exposure import match_histograms
-from skimage import filters, segmentation, color
-from skimage.util import compare_images
+from matplotlib import pyplot as plt
+plt.switch_backend('Agg')
+from skimage import filters, io
 from skimage.color import rgb2gray
-
 #Accent, Accent_r, Blues, Blues_r, BrBG, BrBG_r, BuGn, BuGn_r, BuPu, BuPu_r, CMRmap, CMRmap_r, Dark2,
 #Dark2_r, GnBu, GnBu_r, Greens, Greens_r, Greys, Greys_r, OrRd, OrRd_r, Oranges, Oranges_r, PRGn, PRGn_r,
 #Paired, Paired_r, Pastel1, Pastel1_r, Pastel2, Pastel2_r, PiYG, PiYG_r, PuBu, PuBuGn, PuBuGn_r, PuBu_r,
@@ -30,17 +21,6 @@ from skimage.color import rgb2gray
 # The plot saves with a stupidly large whitespace around it so this function finds the color of the top left
 # pixel and then removes this in rows and columns until it meets a pixel of a different color
 
-output_filename = 'test'
-
-def trim(im):
-    bg = Image.new(im.mode, im.size, im.getpixel((0, 0)))
-    diff = ImageChops.difference(im, bg)
-    diff = ImageChops.add(diff, diff, 2.0, -100)
-    bbox = diff.getbbox()
-    if bbox:
-        return im.crop(bbox)
-
-
 def sketch(url, color):
     
     image = rgb2gray(io.imread(url))
@@ -48,10 +28,12 @@ def sketch(url, color):
     edge_sobel = filters.sobel(image)
 
     fig, axes = plt.subplots(ncols=1, sharex=True, sharey=True, figsize=(8, 8))
-
+    print(fig)
     axes.imshow(edge_sobel, cmap=color)
 
     axes.axis('off')
+
+    output_filename = url.split('/')[6]
 
     plt.savefig(f'{output_filename}.png', bbox_inches='tight', pad_inches=0)
     
