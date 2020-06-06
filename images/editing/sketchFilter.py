@@ -24,7 +24,6 @@ from skimage.color import rgb2gray
 
 def sketch(url, color):
 
-  
     image = rgb2gray(io.imread(url))
 
     edge_sobel = filters.sobel(image)
