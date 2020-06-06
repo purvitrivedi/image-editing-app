@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom'
 
 function Home() {
   const history = useHistory()
-  const [imageURL, setImageURL] = React.useState('')
+  const [imageURL, setImageURL] = React.useState(null)
 
   const handleImageChange = (url) => {
     setImageURL(url)
@@ -15,7 +15,7 @@ function Home() {
   React.useEffect(() => {
     const handlePost = async () => {
       try {
-        if (imageURL !== '') {
+        if (imageURL !== null) {
           const res = await postURL(imageURL)
           history.push(`/edit/${res.data.id}`)
         }
