@@ -22,8 +22,8 @@ class ImageListView(APIView):
         new_image = ImageSerializer(data=request.data)
 
         try:
+            
             if new_image.is_valid():
-                new_image.save()
                 image_filtered = router(new_image.data.get('url'),  new_image.data.get(
                     'filter_type'), new_image.data.get('filter_options'))
                 encoded_image = encode(image_filtered)

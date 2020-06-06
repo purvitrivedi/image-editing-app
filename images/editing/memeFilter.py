@@ -28,7 +28,6 @@ def format_text(text, img_width):
 
 def btm_text_position(text):
   if '\n' in text:
-
     return 0.78
   return 0.86
 
