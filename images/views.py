@@ -32,3 +32,12 @@ class ImageListView(APIView):
     except ValueError:
       value = new_image.data.get('filter_options')
       return Response({'Message': f'{value} Is not a valid option'}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+
+    except IndexError:
+      return Response({'Message': 'filter_options must contain characters ©π'}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+
+    except FileNotFoundError:
+      value = new_image.data.get('filter_options')
+      return Response({'Message': f'{value} Is not a valid reference image'}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+
+

@@ -2,7 +2,7 @@ from django.db import models
 from django.core.exceptions import ValidationError
 
 def validate_filter(value):
-  accepted_filters = ['none', 'sketch', 'histogram', 'collage']
+  accepted_filters = ['none', 'sketch', 'histogram', 'collage', 'meme']
   if value not in accepted_filters:
     raise ValidationError(('%(value)s is not an accepted filter'), params={'value': value},)
 
