@@ -1,0 +1,1514 @@
+[
+  {
+    "model": "images.filter",
+    "pk": 0,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "Accent"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 1,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "Accent_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 2,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "Blues"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 3,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "Blues_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 4,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "BrBG"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 5,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "BrBG_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 6,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "BuGn"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 7,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "BuGn_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 8,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "BuPu"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 9,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "BuPu_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 10,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "CMRmap"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 11,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "CMRmap_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 12,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "Dark2"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 13,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "Dark2_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 14,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "GnBu"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 15,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "GnBu_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 16,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "Greens"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 17,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "Greens_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 18,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "Greys"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 19,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "Greys_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 20,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "OrRd"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 21,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "OrRd_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 22,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "Oranges"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 23,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "Oranges_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 24,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "PRGn"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 25,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "PRGn_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 26,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "Paired"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 27,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "Paired_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 28,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "Pastel1"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 29,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "Pastel1_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 30,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "Pastel2"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 31,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "Pastel2_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 32,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "PiYG"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 33,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "PiYG_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 34,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "PuBu"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 35,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "PuBuGn"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 36,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "PuBuGn_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 37,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "PuBu_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 38,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "PuOr"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 39,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "PuOr_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 40,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "PuRd"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 41,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "PuRd_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 42,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "Purples"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 43,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "Purples_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 44,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "RdBu"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 45,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "RdBu_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 46,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "RdGy"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 47,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "RdGy_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 48,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "RdPu"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 49,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "RdPu_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 50,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "RdYlBu"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 51,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "RdYlBu_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 52,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "RdYlGn"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 53,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "RdYlGn_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 54,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "Reds"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 55,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "Reds_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 56,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "Set1"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 57,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "Set1_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 58,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "Set2"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 59,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "Set2_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 60,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "Set3"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 61,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "Set3_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 62,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "Spectral"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 63,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "Spectral_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 64,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "Wistia"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 65,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "Wistia_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 66,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "YlGn"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 67,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "YlGnBu"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 68,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "YlGnBu_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 69,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "YlGn_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 70,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "YlOrBr"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 71,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "YlOrBr_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 72,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "YlOrRd"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 73,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "YlOrRd_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 74,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "afmhot"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 75,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "afmhot_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 76,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "autumn"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 77,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "autumn_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 78,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "binary"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 79,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "binary_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 80,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "bone"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 81,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "bone_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 82,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "brg"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 83,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "brg_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 84,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "bwr"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 85,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "bwr_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 86,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "cividis"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 87,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "cividis_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 88,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "cool"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 89,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "cool_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 90,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "coolwarm"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 91,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "coolwarm_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 92,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "copper"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 93,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "copper_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 94,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "cubehelix"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 95,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "cubehelix_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 96,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "flag"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 97,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "flag_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 98,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "gist_earth"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 99,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "gist_earth_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 100,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "gist_gray"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 101,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "gist_gray_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 102,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "gist_heat"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 103,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "gist_heat_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 104,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "gist_ncar"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 105,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "gist_ncar_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 106,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "gist_rainbow"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 107,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "gist_rainbow_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 108,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "gist_stern"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 109,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "gist_stern_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 110,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "gist_yarg"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 111,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "gist_yarg_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 112,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "gnuplot"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 113,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "gnuplot2"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 114,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "gnuplot2_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 115,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "gnuplot_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 116,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "gray"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 117,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "gray_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 118,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "hot"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 119,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "hot_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 120,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "hsv"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 121,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "hsv_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 122,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "inferno"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 123,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "inferno_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 124,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "jet"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 125,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "jet_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 126,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "magma"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 127,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "magma_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 128,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "nipy_spectral"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 129,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "nipy_spectral_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 130,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "ocean"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 131,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "ocean_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 132,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "pink"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 133,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "pink_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 134,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "plasma"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 135,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "plasma_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 136,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "prism"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 137,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "prism_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 138,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "rainbow"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 139,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "rainbow_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 140,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "seismic"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 141,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "seismic_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 142,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "spring"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 143,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "spring_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 144,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "summer"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 145,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "summer_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 146,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "tab10"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 147,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "tab10_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 148,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "tab20"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 149,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "tab20_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 150,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "tab20b"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 151,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "tab20b_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 152,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "tab20c"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 153,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "tab20c_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 154,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "terrain"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 155,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "terrain_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 156,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "twilight"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 157,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "twilight_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 158,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "twilight_shifted"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 159,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "twilight_shifted_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 160,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "viridis"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 161,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "viridis_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 162,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "winter"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 163,
+    "fields": {
+      "related_filter": "sketch",
+      "filter_option": "winter_r"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 164,
+    "fields": {
+      "related_filter": "histogram",
+      "filter_option": "https://res.cloudinary.com/jompra/image/upload/v1591533411/ImageEditor/Histogram-references/bright-pinks.jpg"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 165,
+    "fields": {
+      "related_filter": "histogram",
+      "filter_option": "https://res.cloudinary.com/jompra/image/upload/v1591533367/ImageEditor/Histogram-references/mint-humbug.jpg"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 166,
+    "fields": {
+      "related_filter": "histogram",
+      "filter_option": "https://res.cloudinary.com/jompra/image/upload/v1591533277/ImageEditor/Histogram-references/sunset.jpg"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 167,
+    "fields": {
+      "related_filter": "histogram",
+      "filter_option": "https://res.cloudinary.com/jompra/image/upload/v1591533251/ImageEditor/Histogram-references/beige-tone.jpg"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 168,
+    "fields": {
+      "related_filter": "histogram",
+      "filter_option": "https://res.cloudinary.com/jompra/image/upload/v1591533218/ImageEditor/Histogram-references/summer-sand.jpg"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 169,
+    "fields": {
+      "related_filter": "histogram",
+      "filter_option": "https://res.cloudinary.com/jompra/image/upload/v1591533192/ImageEditor/Histogram-references/dusk-blue.jpg"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 170,
+    "fields": {
+      "related_filter": "histogram",
+      "filter_option": "https://res.cloudinary.com/jompra/image/upload/v1591533152/ImageEditor/Histogram-references/autumn-road.jpg"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 171,
+    "fields": {
+      "related_filter": "histogram",
+      "filter_option": "https://res.cloudinary.com/jompra/image/upload/v1591533078/ImageEditor/Histogram-references/indoor-nature.jpg"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 172,
+    "fields": {
+      "related_filter": "histogram",
+      "filter_option": "https://res.cloudinary.com/jompra/image/upload/v1591533051/ImageEditor/Histogram-references/yellow.jpg"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 173,
+    "fields": {
+      "related_filter": "histogram",
+      "filter_option": "https://res.cloudinary.com/jompra/image/upload/v1591533017/ImageEditor/Histogram-references/rose-petal.jpg"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 174,
+    "fields": {
+      "related_filter": "histogram",
+      "filter_option": "https://res.cloudinary.com/jompra/image/upload/v1591532979/ImageEditor/Histogram-references/bright-home.jpg"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 175,
+    "fields": {
+      "related_filter": "histogram",
+      "filter_option": "https://res.cloudinary.com/jompra/image/upload/v1591532945/ImageEditor/Histogram-references/abstract-orange.jpg"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 176,
+    "fields": {
+      "related_filter": "histogram",
+      "filter_option": "https://res.cloudinary.com/jompra/image/upload/v1591532919/ImageEditor/Histogram-references/moth.jpg"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 177,
+    "fields": {
+      "related_filter": "histogram",
+      "filter_option": "https://res.cloudinary.com/jompra/image/upload/v1591529780/ImageEditor/Histogram-references/skintones.jpg"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 178,
+    "fields": {
+      "related_filter": "histogram",
+      "filter_option": "https://res.cloudinary.com/jompra/image/upload/v1591529671/ImageEditor/Histogram-references/wild-bird.jpg"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 179,
+    "fields": {
+      "related_filter": "histogram",
+      "filter_option": "https://res.cloudinary.com/jompra/image/upload/v1591529587/ImageEditor/Histogram-references/Surf.jpg"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 180,
+    "fields": {
+      "related_filter": "histogram",
+      "filter_option": "https://res.cloudinary.com/jompra/image/upload/v1591528916/ImageEditor/Histogram-references/Scales.jpg"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 181,
+    "fields": {
+      "related_filter": "histogram",
+      "filter_option": "https://res.cloudinary.com/jompra/image/upload/v1591528623/ImageEditor/Histogram-references/bright.jpg"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 182,
+    "fields": {
+      "related_filter": "histogram",
+      "filter_option": "https://res.cloudinary.com/jompra/image/upload/v1591527842/ImageEditor/Histogram-references/midnight.jpg"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 183,
+    "fields": {
+      "related_filter": "histogram",
+      "filter_option": "https://res.cloudinary.com/jompra/image/upload/v1591366065/ImageEditor/Histogram-references/deep-reds.jpg"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 184,
+    "fields": {
+      "related_filter": "collage",
+      "filter_option": "gouache"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 185,
+    "fields": {
+      "related_filter": "collage",
+      "filter_option": "oil"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 186,
+    "fields": {
+      "related_filter": "collage",
+      "filter_option": "blur"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 187,
+    "fields": {
+      "related_filter": "collage",
+      "filter_option": "print"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 188,
+    "fields": {
+      "related_filter": "collage",
+      "filter_option": "pixel"
+    }
+  }
+]
