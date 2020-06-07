@@ -19,6 +19,7 @@ def get_thumbs(img, filter, page):
   return result
 
 def resize_image(url):
+  print('resize ran')
   filename = url.split('/')[6]
   response = requests.get(url)
   img = Image.open(BytesIO(response.content))
@@ -37,7 +38,14 @@ def get_sketch_thumbs(img, page):
   return thumb_dictionaries
 
 def get_histogram_thumbs(img, page):
-  return {'message': 'ran get histogram thumbnails, but it doesn\'t do anything yet'}
+  thumb_dictionaries = []
+
+  for reference in histogram_options[page -1]:
+    file_name = histogram(img, reference, thumbnail=True)
+    encoded_image = str(base64.b64encode(open(f'{file_name}.png', 'rb').read()))[2:-1]
+    thumb_dictionaries.append({'reference': reference, 'image': f'data:image/png;base64,{encoded_image}'})
+    os.remove(f'{file_name}.png')
+  return thumb_dictionaries
 
 def get_collage_thumbs(img, page):
   return {'message': 'ran get collage thumbnails, but it doesn\'t do anything yet'}
