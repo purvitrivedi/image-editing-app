@@ -19,7 +19,6 @@ function ImageEdit() {
     getImage()
   }, [imageId])
 
-  console.log('rendering')
 
   return (
     <>
