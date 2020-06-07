@@ -15,6 +15,7 @@ djangorestframework = "*"
 requests = "*"
 scikit-image = "*"
 fonttools = "*"
+cloudinary = "*"
 
 [requires]
 python_version = "3.7"

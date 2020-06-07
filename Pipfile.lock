@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "68c1d003266182b422f076141616ea6216e63decdf24adf50f68bd3179214520"
+            "sha256": "2ee7b4f39592adfd70674b8c84d04a3db64d4ecc0793eda52bf21df069d49a1b"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -26,10 +26,10 @@
         },
         "certifi": {
             "hashes": [
-                "sha256:1d987a998c75633c40847cc966fcf5904906c920a7f17ef374f5aa4282abd304",
-                "sha256:51fcb31174be6e6664c5f69e3e1691a2d72a1a12e90f872cbdb1567eb47b6519"
+                "sha256:5ad7e9a056d25ffa5082862e36f119f7f7cec6457fa07ee2f8c339814b80c9b1",
+                "sha256:9cd41137dc19af6a5e03b630eefe7d1f458d964d406342dd3edf625839b944cc"
             ],
-            "version": "==2020.4.5.1"
+            "version": "==2020.4.5.2"
         },
         "chardet": {
             "hashes": [
@@ -37,6 +37,13 @@
                 "sha256:fc323ffcaeaed0e0a02bf4d117757b98aed530d9ed4531e3e15460124c106691"
             ],
             "version": "==3.0.4"
+        },
+        "cloudinary": {
+            "hashes": [
+                "sha256:ca0695331197549e92fee6ae70a15de6b3ddec342f5019ca429790ad20d41ae6"
+            ],
+            "index": "pypi",
+            "version": "==1.21.0"
         },
         "cycler": {
             "hashes": [
