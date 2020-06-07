@@ -21,14 +21,15 @@ class ImageListView(APIView):
 
     def post(self, request):
         new_image = ImageSerializer(data=request.data)
+        print(new_image)  
 
         try:
-            
             if new_image.is_valid():
                 image_filtered = router(new_image.data.get('url'),  new_image.data.get(
                     'filter_type'), new_image.data.get('filter_options'))
+                if image_filtered == None:
+                    raise ValueError
                 encoded_image = encode(image_filtered)
-
                 return Response({'id': new_image.data.get('id'),'image': encoded_image, 'url': new_image.data.get('url')}, status=status.HTTP_201_CREATED)
             return Response(new_image.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
