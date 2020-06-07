@@ -9,7 +9,8 @@ from .editing.filterRouter import router
 from .editing.sketchFilter import sketch
 from .editing.base64 import encode
 from .models import Image
-from .serializers import ImageSerializer
+from .serializers import ImageSerializer, FilterSerializer
+from .thumbnails import get_thumbs
 
 
 class ImageListView(APIView):
@@ -22,8 +23,8 @@ class ImageListView(APIView):
         new_image = ImageSerializer(data=request.data)
 
         try:
+            
             if new_image.is_valid():
-                new_image.save()
                 image_filtered = router(new_image.data.get('url'),  new_image.data.get(
                     'filter_type'), new_image.data.get('filter_options'))
                 encoded_image = encode(image_filtered)
@@ -55,3 +56,17 @@ class ImageDetailView(APIView):
         serialized_image = ImageSerializer(image) 
         return Response(serialized_image.data)
 
+
+class ThumbnailView(APIView):
+
+    def post(self, request):
+        print('ran in views')
+        thumb_img = FilterSerializer(data=request.data)
+        try:
+          if thumb_img.is_valid():
+            thumbs = get_thumbs(thumb_img.data.get('url'), thumb_img.data.get('filter'), thumb_img.data.get('page'))
+          return Response(thumbs , status=status.HTTP_200_OK)
+        except IndexError:
+          return Response({'Message': 'Out Of Range'} , status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+        except UnboundLocalError:
+          return Response({'Message': 'No Such FIlter'} , status=status.HTTP_422_UNPROCESSABLE_ENTITY)

@@ -8,3 +8,9 @@ class ImageSerializer(serializers.ModelSerializer):
 
     #def create(self, validated_data):
         #return Image.objects.create(**validated_data)
+
+class FilterSerializer(serializers.Serializer):
+
+    url = serializers.CharField(max_length=100)
+    filter = serializers.CharField(max_length=100)
+    page = serializers.IntegerField()
