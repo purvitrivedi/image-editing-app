@@ -7,8 +7,6 @@ def encode(string):
 
     # Returns a string of base 64 characters of the image passed to it. This can be a URL or a filepath.
     # If it's a filepath the file will be deleted once the conversion is complete
-
-    print(string)
     if string[0:4] == 'http':
         encoded_image = str(base64.b64encode(
             requests.get(string).content))[2:-1]
