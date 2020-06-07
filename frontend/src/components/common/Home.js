@@ -24,7 +24,7 @@ function Home() {
       }
     }
     handlePost()
-  }, [imageURL])
+  }, [imageURL, history])
 
 
   return (

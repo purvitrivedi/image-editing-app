@@ -1,6 +1,7 @@
 import React from 'react'
 import { imageUpload } from '../../lib/api'
 import LoadingOverlay from 'react-loading-overlay'
+import Loader from 'react-spinners/BarLoader'
 
 const uploadUrl = process.env.REACT_APP_IMAGE_UPLOAD_URL
 const uploadPreset = process.env.REACT_APP_IMAGE_UPLOAD_PRESET
@@ -48,8 +49,17 @@ function UploadImage({ handleChange }) {
             {loading &&
               <LoadingOverlay
                 active={loading}
-                spinner
-              // text='Loading your image...'
+                spinner={<Loader />}
+                styles={{
+                  spinner: (base) => ({
+                    ...base,
+                    width: '100px',
+                    '& svg circle': {
+                      stroke: 'rgba(0, 0, 0, 1)'
+                    }
+                  })
+                }}
+                className="loading"
               >
               </LoadingOverlay>
             }
