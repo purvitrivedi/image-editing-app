@@ -6,17 +6,32 @@ plt.switch_backend('Agg')
 # The plot saves with a stupidly large whitespace around it so this function finds the color of the top left
 # pixel and then removes this in rows and columns until it meets a pixel of a different color
 
-def sketch(path, color, thumbnail=False):
+
+def sketch(path, type, thumbnail=False):
     if thumbnail == True:
         size = (2, 2)
     else:
         size = (8, 8)
 
     image = rgb2gray(io.imread(path))
-    edge = filters.sobel(image)
+
+    if type == 'pencil':
+        edge = filters.sobel(image)
+        color = 'gist_gray_r'
+    elif type == 'grey':
+        edge = filters.meijering(image)
+        color = 'Greys'
+    elif type == 'twilight':
+        edge = filters.sobel(image)
+        color = 'twilight'
+    elif type == 'mono':
+        edge = filters.gaussian(image)
+        color = 'gist_gray'
+    else:
+        edge = filters.gaussian(image)
+        color = type
 
     fig, axes = plt.subplots(ncols=1, sharex=True, sharey=True, figsize=size)
-    print(fig)
     axes.imshow(edge, cmap=color)
 
     axes.axis('off')

@@ -1,9 +1,9 @@
 from PIL import Image, ImageChops
 from skimage import io
 from skimage.exposure import match_histograms
-import cloudinary
+# import cloudinary
 
-cloudinary.config(cloud_name = "jompra")
+# cloudinary.config(cloud_name = "jompra")
 
 def histogram(url, ref):
 
