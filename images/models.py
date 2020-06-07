@@ -13,7 +13,7 @@ class Image(models.Model):
     url = models.CharField(max_length=120)
     filter_type = models.CharField(
         max_length=10, null=True, validators=[validate_filter])
-    filter_options = models.CharField(max_length=120, null=True)
+    filter_options = models.CharField(max_length=200, null=True)
     # save = models.BooleanField(default=True)
 
     def __str__(self):

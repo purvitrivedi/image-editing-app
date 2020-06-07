@@ -2,6 +2,7 @@ from PIL import Image
 import requests
 from io import BytesIO
 from .editing.sketchFilter import sketch
+from .editing.histogramFilter import histogram
 import base64
 import os
 
@@ -59,3 +60,25 @@ sketch_options = [['Accent', 'Accent_r', 'Blues', 'Blues_r', 'BrBG', 'BrBG_r', '
   ['seismic', 'seismic_r', 'spring', 'spring_r', 'summer', 'summer_r', 'tab10', 'tab10_r', 'tab20', 'tab20_r'],
   ['tab20b', 'tab20b_r', 'tab20c', 'tab20c_r', 'terrain', 'terrain_r', 'twilight', 'twilight_r', 'twilight_shifted', 'twilight_shifted_r'],
   ['viridis', 'viridis_r', 'winter', 'winter_r']]
+
+histogram_options = [
+    ['https://res.cloudinary.com/jompra/image/upload/v1591533411/ImageEditor/Histogram-references/bright-pinks.jpg',
+    'https://res.cloudinary.com/jompra/image/upload/v1591533367/ImageEditor/Histogram-references/mint-humbug.jpg',
+    'https://res.cloudinary.com/jompra/image/upload/v1591533277/ImageEditor/Histogram-references/sunset.jpg',
+    'https://res.cloudinary.com/jompra/image/upload/v1591533251/ImageEditor/Histogram-references/beige-tone.jpg',
+    'https://res.cloudinary.com/jompra/image/upload/v1591533218/ImageEditor/Histogram-references/summer-sand.jpg',],
+    ['https://res.cloudinary.com/jompra/image/upload/v1591533192/ImageEditor/Histogram-references/dusk-blue.jpg',
+    'https://res.cloudinary.com/jompra/image/upload/v1591533152/ImageEditor/Histogram-references/autumn-road.jpg',
+    'https://res.cloudinary.com/jompra/image/upload/v1591533078/ImageEditor/Histogram-references/indoor-nature.jpg',
+    'https://res.cloudinary.com/jompra/image/upload/v1591533051/ImageEditor/Histogram-references/yellow.jpg',
+    'https://res.cloudinary.com/jompra/image/upload/v1591533017/ImageEditor/Histogram-references/rose-petal.jpg'],
+    ['https://res.cloudinary.com/jompra/image/upload/v1591532979/ImageEditor/Histogram-references/bright-home.jpg',
+    'https://res.cloudinary.com/jompra/image/upload/v1591532945/ImageEditor/Histogram-references/abstract-orange.jpg',
+    'https://res.cloudinary.com/jompra/image/upload/v1591532919/ImageEditor/Histogram-references/moth.jpg',
+    'https://res.cloudinary.com/jompra/image/upload/v1591529780/ImageEditor/Histogram-references/skintones.jpg',
+    'https://res.cloudinary.com/jompra/image/upload/v1591529671/ImageEditor/Histogram-references/wild-bird.jpg',],
+    ['https://res.cloudinary.com/jompra/image/upload/v1591529587/ImageEditor/Histogram-references/Surf.jpg',
+    'https://res.cloudinary.com/jompra/image/upload/v1591528916/ImageEditor/Histogram-references/Scales.jpg',
+    'https://res.cloudinary.com/jompra/image/upload/v1591528623/ImageEditor/Histogram-references/bright.jpg',
+    'https://res.cloudinary.com/jompra/image/upload/v1591527842/ImageEditor/Histogram-references/midnight.jpg',
+    'https://res.cloudinary.com/jompra/image/upload/v1591366065/ImageEditor/Histogram-references/deep-reds.jpg']]

@@ -25,6 +25,7 @@ class ImageListView(APIView):
 
         try:
             if new_image.is_valid():
+                new_image.save()
                 image_filtered = router(new_image.data.get('url'),  new_image.data.get(
                     'filter_type'), new_image.data.get('filter_options'))
                 if image_filtered == None:
