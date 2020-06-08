@@ -21,25 +21,26 @@ class ImageListView(APIView):
 
     def post(self, request):
         new_image = ImageSerializer(data=request.data)
-        print(new_image)  
+        #print(new_image)  
 
         try:
             if new_image.is_valid():
                 new_image.save()
                 image_filtered = router(new_image.data.get('url'),  new_image.data.get(
                     'filter_type'), new_image.data.get('filter_options'))
+                print(image_filtered)
                 if image_filtered == None:
                     raise ValueError
                 encoded_image = encode(image_filtered)
                 return Response({'id': new_image.data.get('id'),'image': encoded_image, 'url': new_image.data.get('url')}, status=status.HTTP_201_CREATED)
             return Response(new_image.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
-        except ValueError:
-            value = new_image.data.get('filter_options')
-            return Response({'Message': f'{value} Is not a valid option'}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+        # except ValueError:
+        #     value = new_image.data.get('filter_options')
+        #     return Response({'Message': f'{value} Is not a valid option'}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
-        except IndexError:
-            return Response({'Message': 'filter_options must contain characters ©π'}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+        # except IndexError:
+        #     return Response({'Message': 'filter_options must contain characters ©π'}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
         except FileNotFoundError:
             value = new_image.data.get('filter_options')
