@@ -71,12 +71,6 @@ class ThumbnailView(APIView):
                     'filter'), thumb_img.data.get('page'))
             return Response(thumbs, status=status.HTTP_200_OK)
         except IndexError:
-<<<<<<< HEAD
             return Response({'Message': 'Out Of Range'}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
         except UnboundLocalError:
             return Response({'Message': 'No Such FIlter'}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
-=======
-          return Response({'Message': 'Out Of Range'} , status=status.HTTP_422_UNPROCESSABLE_ENTITY)
-        #except UnboundLocalError:
-          #return Response({'Message': 'No Such FIlter'} , status=status.HTTP_422_UNPROCESSABLE_ENTITY)
->>>>>>> development
