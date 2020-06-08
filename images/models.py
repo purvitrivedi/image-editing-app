@@ -19,10 +19,13 @@ class Image(models.Model):
     def __str__(self):
         return f'{self.url}'
 
+
 class Filter(models.Model):
-  FilterType = models.TextChoices('FilterType', 'sketch histogram collage meme')
-  related_filter = models.CharField(choices=FilterType.choices, max_length=10)
-  filter_option = models.CharField(max_length=200)
-  
-  def __str__(self):
-    return f'{self.related_filter} - {self.filter_option}'
+    FilterType = models.TextChoices(
+        'FilterType', 'sketch histogram collage meme')
+    related_filter = models.CharField(
+        choices=FilterType.choices, max_length=10)
+    filter_option = models.CharField(max_length=200)
+
+    def __str__(self):
+        return f'{self.related_filter} - {self.filter_option}'
