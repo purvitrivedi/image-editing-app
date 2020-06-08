@@ -1,6 +1,6 @@
 import React from 'react'
 import LoadingOverlay from 'react-loading-overlay'
-import Loader from 'react-spinners/BeatLoader'
+import Loader from 'react-spinners/PropagateLoader'
 
 import { getThumbnails, previewFilter } from '../../lib/api'
 
@@ -24,7 +24,6 @@ function Filters({ url, handleImageChange }) {
   React.useEffect(() => {
     const sendThumbnailRequest = async () => {
       setLoading(true)
-      console.log(filterType)
       try {
         const response = await getThumbnails({ url: url, filter: filterType, page: requestPage })
         setThumbnails(response.data)
@@ -34,7 +33,7 @@ function Filters({ url, handleImageChange }) {
       }
     }
     sendThumbnailRequest()
-  }, [url, requestPage, filterType] )
+  }, [url, requestPage, filterType])
 
   const preview = async (event) => {
     try {
@@ -51,7 +50,6 @@ function Filters({ url, handleImageChange }) {
         <button className={filterType === 'sketch' ? 'type-selected' : ''} onClick={changeFilterType} value="sketch">Sketch</button>
         <button className={filterType === 'histogram' ? 'type-selected' : ''} onClick={changeFilterType} value="histogram">Histogram</button>
         <button className={filterType === 'collage' ? 'type-selected' : ''} onClick={changeFilterType} value="collage">Artist Brush</button>
-        <button>Meme Maker</button>
       </div>
       <div className="filters column is-full">
         {!loading && <button className="button filter btn-page" value="left" onClick={changePage}><i className="fas fa-chevron-left"></i></button>}

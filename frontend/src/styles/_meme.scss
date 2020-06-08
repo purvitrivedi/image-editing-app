@@ -1,0 +1,41 @@
+.btn-meme {
+  display: inline-block;
+  font-family: "Helvetica Neue";
+  font-size: 13px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  text-align: center;
+  color: black;
+}
+
+.MemeView {
+  .meme {
+    background-color: rgb(210, 210, 255);
+
+    .left-meme {
+      position: relative;
+      background-color: black;
+
+      img, .top-text {
+        position: absolute;
+        top: 25%;
+        left: 25%;
+      }
+      .top-text {
+        border: none;
+        background-color: transparent;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        color: white;
+        font-size: 40px;
+      }
+    }
+
+    .right-meme {
+      align-self: center;
+      .field {
+        width: 400px;
+      }
+    }
+  }
+}
