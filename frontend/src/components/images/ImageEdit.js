@@ -7,6 +7,7 @@ import Filters from './Filters'
 function ImageEdit() {
   const { id: imageId } = useParams()
   const [image, setImage] = React.useState('')
+  const [b64, setB64] = React.useState(null)
 
   React.useEffect(() => {
     const getImage = async () => {
@@ -20,14 +21,18 @@ function ImageEdit() {
     getImage()
   }, [imageId])
 
+  const imageChange = (image) => {
+    setB64(image)
+  }
 
   return (
     <div className="ImageEdit">
       <div className="box columns is-multiline">
         <div className="column is-full top">
-          <img src={image} alt="uploadedimg" />
+          {b64 && <img src={b64} alt="uploadedimg" />}
+          {!b64 && <img src={image} alt="uploadedimg" />}
         </div>
-        <Filters />
+        <Filters url={image} handleImageChange={imageChange} />
         <button className="button column is-one-quarter">Process Image</button>
       </div>
     </div>

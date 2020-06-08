@@ -19,3 +19,14 @@ export const getSingleImage = imageId => {
   return axios.get(`${baseUrl}/images/${imageId}`)
 }
 
+//* get thumbnails
+
+export const getThumbnails = data => {
+  return axios.post(`${baseUrl}/images/thumbnails/`, data)
+}
+
+//* send preview filter request
+
+export const previewFilter = data => {
+  return axios.post(`${baseUrl}/images/`, data)
+}
