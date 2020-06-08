@@ -11,6 +11,6 @@ class ImageSerializer(serializers.ModelSerializer):
 
 class FilterSerializer(serializers.Serializer):
 
-    url = serializers.CharField(max_length=100)
+    url = serializers.CharField(max_length=200)
     filter = serializers.CharField(max_length=100)
     page = serializers.IntegerField()

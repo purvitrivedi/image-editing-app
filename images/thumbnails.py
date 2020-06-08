@@ -30,6 +30,14 @@ def resize_image(url):
   img = img.resize((200, 200))
   img.save(f'{filename}.png')
 
+#* Wrote this after two glasses of wine so probably needs refactoring
+def encode_and_make_dict(file_name, query_item):
+  thumb_dictionaries = []
+
+  encoded_image = str(base64.b64encode(open(f'{file_name}.png', 'rb').read()))[2:-1]
+
+  thumb_dictionaries.append({'option': query_item.filter_option, 'image': f'data:image/png;base64,{encoded_image}'})
+
 
 def get_sketch_thumbs(img, page):
 
