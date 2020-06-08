@@ -21,13 +21,14 @@ class ImageListView(APIView):
 
     def post(self, request):
         new_image = ImageSerializer(data=request.data)
-        print(new_image)
+        
 
         try:
             if new_image.is_valid():
                 new_image.save()
                 image_filtered = router(new_image.data.get('url'),  new_image.data.get(
                     'filter_type'), new_image.data.get('filter_options'))
+                print(image_filtered)
                 if image_filtered == None:
                     raise ValueError
                 encoded_image = encode(image_filtered)

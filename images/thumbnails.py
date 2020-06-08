@@ -78,6 +78,12 @@ def get_histogram_thumbs(img, page):
         os.remove(f'{file_name}.png')
     return thumb_dictionaries
 
+    for reference in histogram_options:
+      file_name = histogram(img, reference.filter_option, thumbnail=True)
+      encoded_image = str(base64.b64encode(open(f'{file_name}.png', 'rb').read()))[2:-1]
+      thumb_dictionaries.append({'option': reference.filter_option, 'image': f'data:image/png;base64,{encoded_image}'})
+      os.remove(f'{file_name}.png')
+    return thumb_dictionaries
 
 def get_collage_thumbs(img, page):
     thumb_dictionaries = []
