@@ -16,12 +16,12 @@ def histogram(path, ref, thumbnail=False):
     im = Image.fromarray(matched)
 
     if thumbnail:
-      im = im.resize((200, 200))
+        im = im.resize((200, 200))
 
     if path[:4] == 'http':
-      output_filename = path.split('/')[6]
+        output_filename = path.split('/')[6]
     else:
-      output_filename = path.strip('.png')
+        output_filename = path.strip('.png')
 
     im.save(f'{output_filename}.png')
 

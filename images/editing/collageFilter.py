@@ -26,9 +26,9 @@ def collage(url, type, thumbnail=False):
         return None
 
     if thumbnail:
-      size = (2, 2)
+        size = (2, 2)
     else:
-      size = (8, 8)
+        size = (8, 8)
 
     out1 = color.label2rgb(labels1, img, kind='avg', bg_label=0)
 

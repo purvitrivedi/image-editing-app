@@ -21,7 +21,7 @@ class ImageListView(APIView):
 
     def post(self, request):
         new_image = ImageSerializer(data=request.data)
-        print(new_image)  
+        print(new_image)
 
         try:
             if new_image.is_valid():
@@ -31,7 +31,7 @@ class ImageListView(APIView):
                 if image_filtered == None:
                     raise ValueError
                 encoded_image = encode(image_filtered)
-                return Response({'id': new_image.data.get('id'),'image': encoded_image, 'url': new_image.data.get('url')}, status=status.HTTP_201_CREATED)
+                return Response({'id': new_image.data.get('id'), 'image': encoded_image, 'url': new_image.data.get('url')}, status=status.HTTP_201_CREATED)
             return Response(new_image.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
         except ValueError:
@@ -45,6 +45,7 @@ class ImageListView(APIView):
             value = new_image.data.get('filter_options')
             return Response({'Message': f'{value} Is not a valid reference image'}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
+
 class ImageDetailView(APIView):
 
     def get_image(self, pk):
@@ -55,7 +56,7 @@ class ImageDetailView(APIView):
 
     def get(self, _request, pk):
         image = self.get_image(pk)
-        serialized_image = ImageSerializer(image) 
+        serialized_image = ImageSerializer(image)
         return Response(serialized_image.data)
 
 
@@ -65,10 +66,11 @@ class ThumbnailView(APIView):
         print('ran in views')
         thumb_img = FilterSerializer(data=request.data)
         try:
-          if thumb_img.is_valid():
-            thumbs = get_thumbs(thumb_img.data.get('url'), thumb_img.data.get('filter'), thumb_img.data.get('page'))
-          return Response(thumbs , status=status.HTTP_200_OK)
+            if thumb_img.is_valid():
+                thumbs = get_thumbs(thumb_img.data.get('url'), thumb_img.data.get(
+                    'filter'), thumb_img.data.get('page'))
+            return Response(thumbs, status=status.HTTP_200_OK)
         except IndexError:
-          return Response({'Message': 'Out Of Range'} , status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+            return Response({'Message': 'Out Of Range'}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
         except UnboundLocalError:
-          return Response({'Message': 'No Such FIlter'} , status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+            return Response({'Message': 'No Such FIlter'}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
