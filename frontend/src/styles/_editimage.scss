@@ -3,6 +3,13 @@
 
   .box {
     height: 90vh;
+    .editable-img{
+      height: 80vh;
+      img{
+        flex: 1;
+        height: 100%;
+      }
+    }
   }
 
   .top {

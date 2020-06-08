@@ -8,12 +8,14 @@ plt.switch_backend('Agg')
 
 
 def sketch(path, type, thumbnail=False):
+    image = rgb2gray(io.imread(path))
+    
     if thumbnail == True:
         size = (2, 2)
     else:
-        size = (8, 8)
+        size = (image.shape[0] / 200 * 1.6, image.shape[1] / 200 * 1.6)
 
-    image = rgb2gray(io.imread(path))
+    
 
     if type == 'pencil':
         edge = filters.sobel(image)

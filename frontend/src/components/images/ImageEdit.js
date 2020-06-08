@@ -40,7 +40,7 @@ function ImageEdit() {
   return (
     <div className="ImageEdit">
       <div className="box columns is-multiline">
-        <div className="column is-full top">
+        <div className="column is-full top editable-img">
           {b64 && original === false && <img src={b64} alt="uploadedimg" onMouseEnter={showOriginal} />}
           {!b64 && <img src={image} alt="uploadedimg" />}
           {original && <img src={image} alt="uploadedimg" onMouseLeave={hideOriginal}/>}
