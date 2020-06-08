@@ -1,6 +1,7 @@
 from PIL import Image, ImageChops
 from skimage import io
 from skimage.exposure import match_histograms
+from skimage.color import rgba2rgb
 # import cloudinary
 
 # cloudinary.config(cloud_name = "jompra")

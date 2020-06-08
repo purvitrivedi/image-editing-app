@@ -14,7 +14,7 @@ class Image(models.Model):
     filter_type = models.CharField(
         max_length=10, null=True, validators=[validate_filter])
     filter_options = models.CharField(max_length=200, null=True)
-    # save = models.BooleanField(default=True)
+    #save = models.BooleanField(default=True)
 
     def __str__(self):
         return f'{self.url}'
