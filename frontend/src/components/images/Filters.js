@@ -10,13 +10,33 @@ function Filters({ url, handleImageChange }) {
   const [requestPage, setRequestPage] = React.useState(1)
   const [filterType, setFilterType] = React.useState('sketch')
   const [loading, setLoading] = React.useState(false)
+  const [leftArrowDisabled, setLeftArrowDisabled] = React.useState(true)
+  const [rightArrowDisabled, setRightArrowDisabled] = React.useState(false)
 
   const changePage = (event) => {
-    event === 'left' ? setRequestPage(requestPage - 1) : setRequestPage(requestPage + 1)
+    if (filterType === 'sketch' && requestPage === 1 && event.currentTarget.value === 'right') setLeftArrowDisabled(false)
+    if (filterType === 'sketch' && requestPage === 8 && event.currentTarget.value === 'right') setRightArrowDisabled(true)
+    if (filterType === 'sketch' && requestPage === 9 && event.currentTarget.value === 'left') setRightArrowDisabled(false)
+    
+    if (filterType === 'histogram' && requestPage === 1 && event.currentTarget.value === 'right') setRightArrowDisabled(true)
+    if (requestPage === 2 && event.currentTarget.value === 'left') {
+      setRightArrowDisabled(false)
+      setLeftArrowDisabled(true)
+    }
+
+    if (event.currentTarget.value === 'left') {
+      setRequestPage(requestPage - 1)
+    } else {
+      setLeftArrowDisabled(false)
+      setRequestPage(requestPage + 1)
+    }
     setLoading(true)
   }
 
   const changeFilterType = event => {
+    setRequestPage(1)
+    setLeftArrowDisabled(true)
+    setRightArrowDisabled(false)
     setFilterType(event.target.value)
   }
 
@@ -52,7 +72,7 @@ function Filters({ url, handleImageChange }) {
         <button className={filterType === 'collage' ? 'type-selected' : ''} onClick={changeFilterType} value="collage">Artist Brush</button>
       </div>
       <div className="filters column is-full">
-        {!loading && <button className="button filter btn-page" value="left" onClick={changePage}><i className="fas fa-chevron-left"></i></button>}
+        {!loading && !leftArrowDisabled && <button className="button filter btn-page" value="left" onClick={changePage}><i className="fas fa-chevron-left"></i></button>}
         {!loading && thumbnails.map(thumbnail => {
           return (
             <img className="filter" src={thumbnail.image} alt={thumbnail.option} key={thumbnail.option} onClick={preview} />
@@ -75,7 +95,7 @@ function Filters({ url, handleImageChange }) {
           >
           </LoadingOverlay>
         }
-        {!loading && <button className="button btn-page filter" value="right" onClick={changePage}><i className="fas fa-chevron-right"></i></button>}
+        {!loading && !rightArrowDisabled && filterType !== 'collage' && <button className="button btn-page filter" value="right" onClick={changePage}><i className="fas fa-chevron-right" value="right"></i></button>}
       </div>
     </section>
   )
