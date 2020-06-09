@@ -15,7 +15,8 @@ def histogram(path, ref, thumbnail=False):
   if thumbnail == True:
       size = (1, 1)
   else:
-      size = (image.shape[0] / 200 * 1.6, image.shape[1] / 200 * 1.6)
+      # size = (image.shape[0] / 200 * 1.6, image.shape[1] / 200 * 1.6)
+      size = (8, 8)
   # The match_histograms function needs an identical number of channels in each pixel to work.
   # this checks whether the image is RGBA and converts to RGB if it is
   print(image.shape)
