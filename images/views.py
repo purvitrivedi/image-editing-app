@@ -25,14 +25,20 @@ class ImageListView(APIView):
 
         try:
             if new_image.is_valid():
-                new_image.save()
+                if Image.objects.filter(url = new_image.validated_data.get('url')).count() == 0:
+                  new_image.save()
                 image_filtered = router(new_image.data.get('url'),  new_image.data.get(
                     'filter_type'), new_image.data.get('filter_options'))
                 print(image_filtered)
                 if image_filtered == None:
                     raise ValueError
                 encoded_image = encode(image_filtered)
-                return Response({'id': new_image.data.get('id'), 'image': encoded_image, 'url': new_image.data.get('url')}, status=status.HTTP_201_CREATED)
+                result = Image.objects.filter(url = new_image.data.get('url'))
+                
+                for res in result:
+                  result_id = res.id
+
+                return Response({'id': result_id, 'image': encoded_image, 'url': new_image.data.get('url')}, status=status.HTTP_201_CREATED)
             return Response(new_image.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
         except ValueError:
