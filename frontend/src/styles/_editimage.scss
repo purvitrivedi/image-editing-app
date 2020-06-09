@@ -29,6 +29,8 @@
       }
       .type-selected {
         text-decoration: underline;
+        color:#4a85be;
+        font-weight: bold;
       }
 
     }
@@ -40,6 +42,7 @@
       border-radius: 10px;
       display: flex;
       justify-content: center;
+      // overflow: scroll;
 
       .filter {
         width: 100px;

@@ -1,5 +1,5 @@
 from skimage.color import rgb2gray
-from skimage import filters, io
+from skimage import filters, io, exposure
 from matplotlib import pyplot as plt
 plt.switch_backend('Agg')
 
@@ -8,6 +8,7 @@ plt.switch_backend('Agg')
 
 
 def sketch(path, type, thumbnail=False):
+    print(type)
     image = rgb2gray(io.imread(path))
     
     if thumbnail == True:
@@ -28,10 +29,10 @@ def sketch(path, type, thumbnail=False):
         edge = filters.sobel(image)
         color = 'twilight'
     elif type == 'mono':
-        edge = filters.gaussian(image)
+        edge = filters.gaussian(image, sigma=0.4)
         color = 'gist_gray'
     else:
-        edge = filters.gaussian(image)
+        edge = filters.gaussian(image, sigma=0.4)
         color = type
 
     fig, axes = plt.subplots(ncols=1, sharex=True, sharey=True, figsize=size)
