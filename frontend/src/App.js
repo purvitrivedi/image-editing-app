@@ -9,6 +9,7 @@ import MemeView from './components/images/MemeView'
 
 function App() {
   return (
+
     <BrowserRouter>
       <Navbar />
       <Switch>
@@ -17,6 +18,7 @@ function App() {
         <Route exact path="/edit/:id" component={ImageEdit} />
       </Switch>
     </BrowserRouter>
+
   )
 }
 
