@@ -1,4 +1,5 @@
 import React from 'react'
+import { triggerBase64Download } from 'react-base64-downloader'
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import { getSingleImage } from '../../lib/api'
@@ -36,16 +37,18 @@ function ImageEdit() {
     setOriginal(false)
   }
 
+
   return (
     <div className="ImageEdit">
       <div className="box columns is-multiline">
         <div className="column is-full top editable-img">
+          {/* <canvas ref="canvas" width={600} height={600} /> */}
           {b64 && original === false && <img src={b64} alt="uploadedimg" onMouseEnter={showOriginal} />}
           {!b64 && <img src={image} alt="uploadedimg" />}
           {original && <img src={image} alt="uploadedimg" onMouseLeave={hideOriginal} />}
         </div>
         <Filters url={image} handleImageChange={imageChange} />
-        <button className="button button-process column is-one-quarter">Process Image</button>
+        <button className="button button-process column is-one-quarter" onClick={() => triggerBase64Download(b64, 'my_download_name')}>Process Image</button>
         <Link to={`/edit/${imageId}/meme`} className="btn-meme column is-full">Make it a Meme</Link>
       </div>
 

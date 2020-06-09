@@ -13,7 +13,8 @@ def sketch(path, type, thumbnail=False):
     if thumbnail == True:
         size = (2, 2)
     else:
-        size = (image.shape[0] / 200 * 1.6, image.shape[1] / 200 * 1.6)
+        # size = (image.shape[0] / 200 * 1.6, image.shape[1] / 200 * 1.6)
+        size = (8, 8)
 
     
 
