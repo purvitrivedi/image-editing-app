@@ -1,5 +1,4 @@
 import React from 'react'
-import { triggerBase64Download } from 'react-base64-downloader'
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import { getSingleImage } from '../../lib/api'
@@ -8,6 +7,7 @@ import Filters from './Filters'
 import { Stage, Layer, Image } from 'react-konva'
 import Konva from 'konva'
 import useImage from 'use-image'
+import SaveImage from './SaveImage'
 
 
 
@@ -18,8 +18,13 @@ function ImageEdit() {
   const [width, setWidth] = React.useState(null)
   const [height, setHeight] = React.useState(null)
   const [url, setUrl] = React.useState('')
-  const [im] = useImage(url, 'Anonimus')
+  const [im] = useImage(url, 'anonymous')
+  const [dataURL, setDataURL] = React.useState('')
+  const [showSave, setShowSave] = React.useState(false)
+  const stageRef = React.useRef()
   const imageRef = React.useRef()
+  
+  
   const [liveEffect, setliveEffect] = React.useState({
     blur: 0,
     brightness: 0,
@@ -54,7 +59,7 @@ function ImageEdit() {
       }
     }
     getImage()
-  }, [imageId])
+  }, [imageId, height, image, width])
 
   React.useEffect(() => {
     if (im) {
@@ -70,13 +75,15 @@ function ImageEdit() {
   }
 
   const showOriginal = () => {
-    console.log('mouse has entered')
-    setUrl(image)
     setAppliedEffect(false)
+    setUrl(image)
+    console.log('mouse has entered')
   }
+
   const hideOriginal = () => {
-    setUrl(b64)
     setAppliedEffect(true)
+    setUrl(b64)
+    
     console.log('mouse has left')
   }
 
@@ -89,13 +96,23 @@ function ImageEdit() {
     setliveEffect(defaultEffect)
   }
 
-  console.log(image)
+  
+
+  const handleSaveImage = () => {
+    const dataURL = stageRef.current.toDataURL()
+    setDataURL(dataURL)
+  }
 
   return (
     <div className="ImageEdit">
       <div className="box columns is-multiline">
         <div className="edit-box column">
-          <Stage width={width} height={height} >
+          <Stage 
+            width={width} 
+            height={height} 
+            ref={stageRef}
+            id="stage"
+          >
             <Layer>
               <Image
                 ref={imageRef}
@@ -136,9 +153,18 @@ function ImageEdit() {
         </div>
         <div>
           <LiveEffects liveChange={handleLiveChange} feedback={liveEffect} />
+          {showSave && <SaveImage imageData={dataURL}/>}
         </div>
         <Filters url={image} handleImageChange={imageChange} />
-        <button className="button button-process column is-one-quarter" onClick={() => triggerBase64Download(b64, 'my_download_name')}>Process Image</button>
+
+        <button 
+          className="button button-process column is-one-quarter" 
+          onClick={() =>{
+            handleSaveImage()
+            setShowSave(true)
+          }}
+        >Process Image</button>
+
         <Link to={`/edit/${imageId}/meme`} className="btn-meme column is-full">Make it a Meme</Link>
       </div>
     </div>
