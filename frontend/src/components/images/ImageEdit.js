@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { triggerBase64Download } from 'react-base64-downloader'
 import { useParams } from 'react-router-dom'
 import { getSingleImage } from '../../lib/api'
@@ -9,6 +10,7 @@ import MemeView from './MemeView'
 import { Stage, Layer, Image } from 'react-konva'
 import Konva from 'konva'
 import useImage from 'use-image'
+import SaveImage from './SaveImage'
 
 
 
@@ -20,8 +22,13 @@ function ImageEdit() {
   const [width, setWidth] = React.useState(null)
   const [height, setHeight] = React.useState(null)
   const [url, setUrl] = React.useState('')
-  const [im] = useImage(url, 'Anonimus')
+  const [im] = useImage(url, 'anonymous')
+  const [dataURL, setDataURL] = React.useState('')
+  const [showSave, setShowSave] = React.useState(false)
+  const stageRef = React.useRef()
   const imageRef = React.useRef()
+  
+  
   const [liveEffect, setliveEffect] = React.useState({
     blur: 0,
     brightness: 0,
@@ -57,7 +64,7 @@ function ImageEdit() {
       }
     }
     getImage()
-  }, [imageId])
+  }, [imageId, height, image, width])
 
   React.useEffect(() => {
     if (im) {
@@ -75,9 +82,10 @@ function ImageEdit() {
   const showOriginal = () => {
     setUrl(image)
     setAppliedEffect(false)
+    console.log('mouse has entered')
   }
+
   const hideOriginal = () => {
-    setUrl(b64)
     setAppliedEffect(true)
   }
 
@@ -91,6 +99,12 @@ function ImageEdit() {
     setB64('')
   }
 
+  
+
+  const handleSaveImage = () => {
+    const dataURL = stageRef.current.toDataURL()
+    setDataURL(dataURL)
+  }
   const enableMeme = () => {
     setMeme(true)
   }
@@ -99,13 +113,31 @@ function ImageEdit() {
     <div className="ImageEdit">
       <div className="box columns is-multiline">
         <div className="column is-full columns buttons">
+<<<<<<< HEAD
           <button className=" btn-meme column is-three-quarter" onClick={enableMeme}>Make it a Meme</button>
           <button className=" btn-reset column is-one-quarter" onClick={resetEffects}>Reset</button>
           <button className=" button-process column is-one-quarter" onClick={() => triggerBase64Download(b64, 'my_download_name')}>Process Image</button>
 
+=======
+          <button className="btn-meme column is-one-quarter" onClick={enableMeme}>Make it a Meme</button>
+          <button className="button button-process column is-one-quarter" onClick={() => {
+            handleSaveImage()
+            setShowSave(true)
+          }}>Process Image</button>
+>>>>>>> development
         </div>
+        {showSave && <SaveImage imageData={dataURL} />}
         <div className="edit-box column">
+<<<<<<< HEAD
           <Stage width={width} height={height}>
+=======
+          <Stage 
+            width={width} 
+            height={height} 
+            ref={stageRef}
+            id="stage"
+          >
+>>>>>>> development
             <Layer>
               <Image
                 ref={imageRef}
