@@ -1,24 +1,98 @@
 .ImageEdit {
   font-family: "Helvetica Neue";
 
+  .buttons {
+    justify-content: space-between;
+    margin-top: 0em;
+    margin-bottom: -2em;
+    padding: 0em;
+    .button-process,
+    .btn-meme {
+      font-size: 12px;
+      border: none;
+      background-color: transparent;
+      border-radius: 5px;
+      font-weight: 800;
+      width: 200px;
+      height: 50px;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .btn-meme {
+      background-color: transparent;
+      color: black;
+    }
+  }
   .box {
     height: 90vh;
     text-align: center;
-    // .editable-img {
-    //   height: 50vh;
-    //   img {
-    //     flex: 1;
-    //     height: 100%;
-    //   }
-    // }
-  }
+    justify-content: center;
+    flex-wrap: wrap;
+    .edit-box {
+      margin-left: 50px;
+      display: flex;
+      justify-content: center;
 
-  .top {
-    text-align: center;
+      .checkboxes {
+        align-self: center;
+        
+        label {
+          font-size: 13px;
+        }
+      }
+    }
+    .live-effects-wrap {
+      width: 100%;
+      align-content: center;
+      margin-bottom: -1em;
+
+      .live-effects {
+        align-self: center;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        padding-top: 0em;
+
+        .sliders {
+          display: flex;
+          flex-wrap: wrap;
+          align-self: center;
+          justify-content: center;
+          align-items: center;
+
+          .display-none {
+            display: none;
+          }
+          label {
+            font-weight: 400;
+            font-size: 13px;
+            margin-bottom: 1em;
+          }
+
+          .button-reset {
+            border: none;
+            background-color: transparent;
+            border-radius: 5px;
+            font-weight: 800;
+            width: 100px;
+            height: 20px;
+            cursor: pointer;
+            outline: none;
+          }
+        }
+        .field {
+          margin: 10px;
+        }
+      }
+    }
   }
   section {
+    padding: 0rem 1.5rem;
+    // border: 1px black solid;
     .filter-type {
       justify-content: center;
+      margin-top: 0.5rem;
       button {
         margin: 5px;
         text-align: center;
@@ -44,9 +118,13 @@
       justify-content: center;
       // overflow: scroll;
 
+      .arrow-disabled {
+        color: rgb(207, 207, 207);
+      }
+
       .filter {
-        width: 100px;
-        height: 100px;
+        width: 80px;
+        height: 80px;
         background-color: #f3efba;
         margin: 9.5px;
         border-radius: 10px;
@@ -56,19 +134,9 @@
       .btn-page {
         background-color: transparent;
         border: none;
+        outline: none;
       }
     }
-  }
-
-  .button-process {
-    margin: 0 auto;
-    border-radius: 5px;
-    background-color: black;
-    color: white;
-    font-weight: 800;
-    width: 200px;
-    height: 50px;
-    cursor: pointer;
   }
 }
 

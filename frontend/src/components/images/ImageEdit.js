@@ -1,13 +1,15 @@
 import React from 'react'
 import { triggerBase64Download } from 'react-base64-downloader'
-import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import { getSingleImage } from '../../lib/api'
 import LiveEffects from './LiveEffects'
+import LiveEffectChecks from './LiveEffectChecks'
 import Filters from './Filters'
+import MemeView from './MemeView'
 import { Stage, Layer, Image } from 'react-konva'
 import Konva from 'konva'
 import useImage from 'use-image'
+
 
 
 
@@ -39,6 +41,7 @@ function ImageEdit() {
     enhance: 0,
     alpha: 1
   }
+  const [meme, setMeme] = React.useState(false)
 
 
   React.useEffect(() => {
@@ -89,11 +92,18 @@ function ImageEdit() {
     setliveEffect(defaultEffect)
   }
 
-  console.log(image)
+  const enableMeme = () => {
+    console.log('clicked')
+    setMeme(true)
+  }
 
   return (
     <div className="ImageEdit">
       <div className="box columns is-multiline">
+        <div className="column is-full columns buttons">
+          <button className="btn-meme column is-one-quarter" onClick={enableMeme}>Make it a Meme</button>
+          <button className="button button-process column is-one-quarter" onClick={() => triggerBase64Download(b64, 'my_download_name')}>Process Image</button>
+        </div>
         <div className="edit-box column">
           <Stage width={width} height={height} >
             <Layer>
@@ -115,7 +125,7 @@ function ImageEdit() {
                   //Konva.Filters.Kaleidoscope,
 
                   // * Have to pass the Konva filters a function even if they are not used to surpress warnings in the console.
-                  liveEffect.sepiaActive && appliedEffect ? Konva.Filters.Sepia : function () { } ,
+                  liveEffect.sepiaActive && appliedEffect ? Konva.Filters.Sepia : function () { },
                   liveEffect.embossActive && appliedEffect ? Konva.Filters.Emboss : function () { },
                   liveEffect.grayscaleActive && appliedEffect ? Konva.Filters.Grayscale : function () { },
                   liveEffect.invertActive && appliedEffect ? Konva.Filters.Invert : function () { }
@@ -132,14 +142,11 @@ function ImageEdit() {
               />
             </Layer>
           </Stage>
-          <button onClick={resetEffects}>Reset</button>
+          {meme && <MemeView />}
+          <LiveEffectChecks liveChange={handleLiveChange} reset={resetEffects} feedback={liveEffect} className="column" />
         </div>
-        <div>
-          <LiveEffects liveChange={handleLiveChange} feedback={liveEffect} />
-        </div>
+        <LiveEffects liveChange={handleLiveChange} reset={resetEffects} feedback={liveEffect} className="column is-one-quarter" />
         <Filters url={image} handleImageChange={imageChange} />
-        <button className="button button-process column is-one-quarter" onClick={() => triggerBase64Download(b64, 'my_download_name')}>Process Image</button>
-        <Link to={`/edit/${imageId}/meme`} className="btn-meme column is-full">Make it a Meme</Link>
       </div>
     </div>
   )
