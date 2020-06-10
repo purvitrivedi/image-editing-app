@@ -142,7 +142,7 @@ function LiveEffects({ liveChange, feedback }) {
         onChange={handleChange}
         type="range">
       </input>
-      <button>Reset</button>
+      <button onClick={handleChange}>Reset</button>
     </>
   )
 }

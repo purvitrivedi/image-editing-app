@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom'
 import { getSingleImage } from '../../lib/api'
 import LiveEffects from './LiveEffects'
 import Filters from './Filters'
-import { Stage, Layer, Rect, Image } from 'react-konva'
+import { Stage, Layer, Image } from 'react-konva'
 import Konva from 'konva'
 import useImage from 'use-image'
 
@@ -91,13 +91,13 @@ function ImageEdit() {
                   Konva.Filters.Contrast,
                   Konva.Filters.Enhance,
                   Konva.Filters.HSL,
-                  
-                  
                   //Konva.Filters.Kaleidoscope,
-                  liveEffect.sepiaActive ? Konva.Filters.Sepia : null,
-                  liveEffect.embossActive ? Konva.Filters.Emboss : null,
-                  liveEffect.grayscaleActive ? Konva.Filters.Grayscale : null,
-                  liveEffect.invertActive ? Konva.Filters.Invert : null
+                  
+                  // * Have to pass the Konva filters a function even if they are not used to surpress warnings in the console.
+                  liveEffect.sepiaActive ? Konva.Filters.Sepia : function(){},
+                  liveEffect.embossActive ? Konva.Filters.Emboss : function(){},
+                  liveEffect.grayscaleActive ? Konva.Filters.Grayscale : function(){},
+                  liveEffect.invertActive ? Konva.Filters.Invert : function(){}
                   
                 ] }
                 blurRadius={liveEffect.blur}
