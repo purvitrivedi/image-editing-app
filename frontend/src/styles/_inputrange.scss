@@ -5,7 +5,8 @@
     height:15px;
     border-radius: 12px;
     -webkit-appearance: none;
-    background-color: rgb(169, 196, 240);
+    background-color:#9bc3cc41;
+    border: 1px solid rgb(185, 185, 185);
   }
 
   input[type=range]:focus {
@@ -15,7 +16,7 @@
   input[type='range']::-webkit-slider-runnable-track {
     height: 10px;
     -webkit-appearance: none;
-    color: #13bba4;
+    color: #88ada8;
     margin-top: -1px;
   }
   
@@ -23,10 +24,9 @@
     width: 10px;
     -webkit-appearance: none;
     height: 10px;
-    // border-radius: 12px;
     cursor: pointer;
-    background: rgb(1, 42, 17);
-    box-shadow: -80px 0 0 80px rgba(17, 85, 68, 0.418);
+    background:#332f31;
+    box-shadow: -80px 0 0 80px #332f31;
   }
 
 

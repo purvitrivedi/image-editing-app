@@ -41,7 +41,7 @@ function ImageEdit() {
     enhance: 0,
     alpha: 1
   }
-  const [meme, setMeme] = React.useState(false)
+  const [meme, setMeme] = React.useState(true)
 
 
   React.useEffect(() => {
@@ -73,27 +73,25 @@ function ImageEdit() {
   }
 
   const showOriginal = () => {
-    console.log('mouse has entered')
     setUrl(image)
     setAppliedEffect(false)
   }
   const hideOriginal = () => {
     setUrl(b64)
     setAppliedEffect(true)
-    console.log('mouse has left')
   }
 
   const handleLiveChange = data => {
-    console.log(data)
     setliveEffect(data)
   }
 
   const resetEffects = () => {
     setliveEffect(defaultEffect)
+    setUrl(image)
+    setB64('')
   }
 
   const enableMeme = () => {
-    console.log('clicked')
     setMeme(true)
   }
 
@@ -101,11 +99,13 @@ function ImageEdit() {
     <div className="ImageEdit">
       <div className="box columns is-multiline">
         <div className="column is-full columns buttons">
-          <button className="btn-meme column is-one-quarter" onClick={enableMeme}>Make it a Meme</button>
-          <button className="button button-process column is-one-quarter" onClick={() => triggerBase64Download(b64, 'my_download_name')}>Process Image</button>
+          <button className=" btn-meme column is-three-quarter" onClick={enableMeme}>Make it a Meme</button>
+          <button className=" btn-reset column is-one-quarter" onClick={resetEffects}>Reset</button>
+          <button className=" button-process column is-one-quarter" onClick={() => triggerBase64Download(b64, 'my_download_name')}>Process Image</button>
+
         </div>
         <div className="edit-box column">
-          <Stage width={width} height={height} >
+          <Stage width={width} height={height}>
             <Layer>
               <Image
                 ref={imageRef}
@@ -142,8 +142,8 @@ function ImageEdit() {
               />
             </Layer>
           </Stage>
-          {meme && <MemeView />}
-          <LiveEffectChecks liveChange={handleLiveChange} reset={resetEffects} feedback={liveEffect} className="column" />
+          <LiveEffectChecks liveChange={handleLiveChange} feedback={liveEffect} className="column" />
+          {meme && <MemeView width={width} height={height} image={image} handleImageChange={imageChange}/>}
         </div>
         <LiveEffects liveChange={handleLiveChange} reset={resetEffects} feedback={liveEffect} className="column is-one-quarter" />
         <Filters url={image} handleImageChange={imageChange} />
