@@ -7,7 +7,6 @@ function MemeView() {
   const [image, setImage] = React.useState('')
   const [topText, setTopText] = React.useState('')
   const [bottomText, setBottomText] = React.useState('')
-  const [imgWidth, setImgWidth] = React.useState(null)
   const [processed, setProcessed] = React.useState(false)
 
   React.useEffect(() => {
@@ -26,28 +25,21 @@ function MemeView() {
     event.target.name === 'topText' ? setTopText(event.target.value) : setBottomText(event.target.value)
   }
 
-  const onImgLoad = ({ target: img }) => {
-    setImgWidth(img.offsetWidth)
-  }
-
-
   const sendPostRequest = async() => {
     const text = `${topText}©π${bottomText}`
     const res = await previewFilter({ url: image, filter_type: 'meme', filter_options: text })
     setImage(res.data.image)
     setProcessed(true)
   }
-
-
-  console.log(imgWidth)
+  
   return (
     <div className="MemeView">
       <div className="columns is-multiline meme">
-        <div className="left-meme column">
+        {/* <div className="left-meme column">
           <img src={image} alt="formeme" onLoad={onImgLoad} />
           {!processed && <input type="text" className="top-text" value={topText} style={{ width: `${imgWidth}px` }} />}
           {!processed && <input type="text" className="bottom-text" value={bottomText} style={{ width: `${imgWidth}px`, top: `${imgWidth + 120}px` }} />}
-        </div>
+        </div> */}
         {!processed && <div className="column right-meme columns is-multiline">
           <div className="field column is-full">
             <input
@@ -69,7 +61,7 @@ function MemeView() {
               placeholder="Enter bottom text"
             />
           </div>
-          <div className="save-btn button" onClick={sendPostRequest}>Process Image</div>
+          <div className="save-btn button" onClick={sendPostRequest}>Memify</div>
         </div>}
         
       </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-function LiveEffects({ liveChange, feedback }) {
+function LiveEffects({ liveChange, feedback, reset }) {
 
   const handleChange = event => {
     const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value
@@ -10,138 +10,120 @@ function LiveEffects({ liveChange, feedback }) {
 
 
   return (
-    <>
-      <p>Blur</p>
-      <input
-        className="slider is-fullwidth is-small is-circle"
-        step="1"
-        min="0"
-        max="100"
-        name="blur"
-        value={feedback.blur}
-        onChange={handleChange}
-        type="range">
-      </input>
+    <div className="columns is-multiline live-effects-wrap">
+      <div className="live-effects column is-full">
+        <div className="sliders">
+          <div className="field">
+            <input
+              step="0.2"
+              min="0"
+              max="100"
+              name="blur"
+              value={feedback.blur}
+              onChange={handleChange}
+              type="range">
+            </input>
+            <label className="label">Blur</label>
+          </div>
 
-      <p>Brightness</p>
-      <input
-        className="slider is-fullwidth is-small is-circle"
-        step="0.01"
-        min="-1"
-        max="1"
-        name="brightness"
-        value={feedback.brightness}
-        onChange={handleChange}
-        type="range">
-      </input>
+          <div className="field">
+            <input
+              step="0.01"
+              min="-1"
+              max="1"
+              name="brightness"
+              value={feedback.brightness}
+              onChange={handleChange}
+              type="range">
+            </input>
+            <label className="label">Brightness</label>
+          </div>
 
-      <p>Contrast</p>
-      <input
-        className="slider is-fullwidth is-small is-circle"
-        step="1"
-        min="-80"
-        max="100"
-        name="contrast"
-        value={feedback.contrast}
-        onChange={handleChange}
-        type="range">
-      </input>
+          <div className="field">
+            <input
+              step="1"
+              min="-80"
+              max="100"
+              name="contrast"
+              value={feedback.contrast}
+              onChange={handleChange}
+              type="range">
+            </input>
+            <label className="label">Contrast</label>
+          </div>
 
-      <p>Enhance</p>
-      <input
-        className="slider is-fullwidth is-small is-circle"
-        step="0.01"
-        min="0"
-        max="20"
-        name="enhance"
-        value={feedback.enhance}
-        onChange={handleChange}
-        type="range">
-      </input>
+          <div className="field">
+            <input
+              step="0.01"
+              min="0"
+              max="20"
+              name="enhance"
+              value={feedback.enhance}
+              onChange={handleChange}
+              type="range">
+            </input>
+            <label className="label">Enhance</label>
+          </div>
 
 
-      <p>Emboss</p>
-      <input
-        type="checkbox"
-        name="embossActive"
-        checked={feedback.embossActive}
-        onChange={handleChange}
-      />
+          <div className="field">
+            <input
+              step="1"
+              min="0"
+              max="255"
+              name="hue"
+              value={feedback.hue}
+              onChange={handleChange}
+              type="range">
+            </input>
+            <label className="label">Hue</label>
+          </div>
 
-      <p>Emboss Level</p>
-      <input
-        className="slider is-fullwidth is-small is-circle"
-        step="0.01"
-        min="-2"
-        max="2"
-        name="embossStrength"
-        value={feedback.embossStrength}
-        onChange={handleChange}
-        type="range"
-        disabled={feedback.embossActive ? '' : 'disabled'}>
-      </input>
+          <div className="field">
+            <input
+              step="0.01"
+              min="0"
+              max="4"
+              name="saturation"
+              value={feedback.saturation}
+              onChange={handleChange}
+              type="range">
+            </input>
+            <label className="label">Saturation</label>
+          </div>
 
-      <p>Grayscale</p>
-      <input
-        type="checkbox"
-        name="grayscaleActive"
-        checked={feedback.grayscaleActive}
-        onChange={handleChange}
-      />
+          <div className="field">
+            <input
+              step="0.01"
+              min="-1"
+              max="1"
+              name="luminance"
+              value={feedback.luminance}
+              onChange={handleChange}
+              type="range">
+            </input>
+            <label className="label">Luminance</label>
+          </div>
 
-      <p>Invert</p>
-      <input
-        type="checkbox"
-        name="invertActive"
-        checked={feedback.invertActive}
-        onChange={handleChange}
-      /> 
 
-      <p>Sepia</p>
-      <input
-        type="checkbox"
-        name="sepiaActive"
-        checked={feedback.sepiaActive}
-        onChange={handleChange}
-      /> 
-
-      <p>Hue</p>
-      <input
-        className="slider is-fullwidth is-small is-circle"
-        step="1"
-        min="0"
-        max="255"
-        name="hue"
-        value={feedback.hue}
-        onChange={handleChange}
-        type="range">
-      </input>
-      
-      <p>Saturation</p>
-      <input
-        className="slider is-fullwidth is-small is-circle"
-        step="0.01"
-        min="0"
-        max="4"
-        name="saturation"
-        value={feedback.saturation}
-        onChange={handleChange}
-        type="range">
-      </input>
-
-      <p>Luminance</p>
-      <input
-        className="slider is-fullwidth is-small is-circle"
-        step="0.01"
-        min="-1"
-        max="1"
-        name="luminance"
-        value={feedback.luminance}
-        onChange={handleChange}
-        type="range">
-      </input>
-      <button onClick={handleChange}>Reset</button>
-    </>
+          <div className="field display-none">
+            <input
+              step="0.01"
+              min="-2"
+              max="2"
+              name="embossStrength"
+              value={feedback.embossStrength}
+              onChange={handleChange}
+              type="range"
+            />
+            <label className="label">Emboss Level</label>
+          </div>
+          {/* <div className="field">
+            <button className="button-reset" onClick={reset}>Reset</button>
+          </div> */}
+        </div>
+      </div>
+    </div>
   )
 }
 export default LiveEffects
