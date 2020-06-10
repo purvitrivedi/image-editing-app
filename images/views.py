@@ -37,8 +37,10 @@ class ImageListView(APIView):
                 
                 for res in result:
                   result_id = res.id
+                  result_width = res.width
+                  result_height = res.height
 
-                return Response({'id': result_id, 'image': encoded_image, 'url': new_image.data.get('url')}, status=status.HTTP_201_CREATED)
+                return Response({'id': result_id, 'image': encoded_image, 'url': new_image.data.get('url'), 'width': result_width, 'height': result_height}, status=status.HTTP_201_CREATED)
             return Response(new_image.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
         except ValueError:

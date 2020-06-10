@@ -10,8 +10,8 @@ export const imageUpload = (uploadUrl, data) => {
 
 //* Post URL to backend
 
-export const postURL = url => {
-  return axios.post(`${baseUrl}/images/`, { url: url })
+export const postURL = ({ url, height, width }) => {
+  return axios.post(`${baseUrl}/images/`, { url, width, height })
 }
 
 //* get Single Image

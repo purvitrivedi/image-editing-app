@@ -5,7 +5,10 @@
     height: 90vh;
     .editable-img {
       height: 50vh;
-      img {
+      // canvas{
+      //   border: 1px solid black;
+      // }
+      img{
         flex: 1;
         height: 100%;
       }

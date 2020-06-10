@@ -6,17 +6,22 @@ import { useHistory } from 'react-router-dom'
 
 function Home() {
   const history = useHistory()
-  const [imageURL, setImageURL] = React.useState(null)
+  const [imageData, setImageData] = React.useState(null)
 
-  const handleImageChange = (url) => {
-    setImageURL(url)
+  const handleImageChange = (data) => {
+    const { url, width, height } = data
+    setImageData({
+      url,
+      width,
+      height
+    })
   }
 
   React.useEffect(() => {
     const handlePost = async () => {
       try {
-        if (imageURL !== null) {
-          const res = await postURL(imageURL)
+        if (imageData !== null) {
+          const res = await postURL(imageData)
           history.push(`/edit/${res.data.id}`)
         }
       } catch (err) {
@@ -24,9 +29,9 @@ function Home() {
       }
     }
     handlePost()
-  }, [imageURL, history])
+  }, [imageData, history])
 
-
+console.log('imgdata', imageData)
   return (
     <>
       <UploadImage handleChange={handleImageChange} />

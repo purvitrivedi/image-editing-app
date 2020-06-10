@@ -17,7 +17,7 @@ function UploadImage({ handleChange }) {
     data.append('file', event.target.files[0])
     data.append('upload_preset', uploadPreset)
     const res = await imageUpload(uploadUrl, data)
-    handleChange(res.data.url)
+    handleChange(res.data)
   }
 
   return (

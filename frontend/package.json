@@ -8,14 +8,18 @@
     "bulma": "^0.8.2",
     "eslint-plugin-react": "^7.20.0",
     "http-proxy-middleware": "^1.0.4",
+    "image-size": "^0.8.3",
+    "konva": "^6.0.0",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-base64-downloader": "^2.1.6",
     "react-dom": "^16.13.1",
+    "react-konva": "^16.13.0-3",
     "react-loading-overlay": "^1.0.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
-    "react-spinners": "^0.8.3"
+    "react-spinners": "^0.8.3",
+    "use-image": "^1.0.5"
   },
   "scripts": {
     "start": "react-scripts start",
