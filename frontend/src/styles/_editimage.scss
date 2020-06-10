@@ -3,9 +3,9 @@
 
   .box {
     height: 90vh;
-    .editable-img{
+    .editable-img {
       height: 50vh;
-      img{
+      img {
         flex: 1;
         height: 100%;
       }
@@ -24,15 +24,14 @@
         border: none;
         background-color: transparent;
         font-size: 15px;
-        outline:none;
+        outline: none;
         cursor: pointer;
       }
       .type-selected {
         text-decoration: underline;
-        color:#4a85be;
+        color: #4a85be;
         font-weight: bold;
       }
-
     }
 
     .filters {
@@ -52,7 +51,7 @@
         border-radius: 10px;
         cursor: pointer;
       }
-      
+
       .btn-page {
         background-color: transparent;
         border: none;
@@ -70,4 +69,71 @@
     height: 50px;
     cursor: pointer;
   }
+}
+
+@media (max-height: 800px) {
+  .section {
+    padding: 0rem 1.5rem;
+  }
+
+  .filter {
+    width: 80px !important;
+    height: 80px !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  .section {
+    padding: 0rem 1.5rem;
+    height: 150px;
+  }
+  .filter {
+    width: 75px !important;
+    height: 75px !important;
+  }
+  .button-process {
+    width: 300px !important;
+    height: 50px;
+  }
+}
+
+@media (max-width: 800px) {
+
+  .filter-type {
+    margin-left: 14.25rem;
+    margin-right: -0.75rem;
+    margin-top: 1.25rem;
+}
+
+  .section {
+    padding: 0rem 1.5rem;
+    height: 250px;
+  }
+  .filters {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 500px) {
+
+  .box {
+    overflow: scroll;
+  }
+  .filter-type {
+    margin-left: 1rem;
+    margin-right: -0.75rem;
+    margin-top: 1.25rem;
+    text-align: center;
+}
+.section {
+  height: 650px;
+}
+.button-process {
+  width: 200px !important;
+}
+
+.ImageEdit .box .editable-img img {
+height: 80%;
+}
+
 }

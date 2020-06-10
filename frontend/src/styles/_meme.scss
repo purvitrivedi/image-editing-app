@@ -58,3 +58,17 @@
     }
   }
 }
+
+@media (max-width: 1024px) {
+  .btn-meme {
+    font-size: 20px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 800px) {
+  .btn-meme {
+    font-size: 15px;
+    width: 100%;
+  }
+}
