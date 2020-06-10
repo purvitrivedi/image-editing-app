@@ -9,8 +9,6 @@ function LiveEffects({ liveChange, feedback }) {
   }
 
 
-
-
   return (
     <>
       <p>Blur</p>

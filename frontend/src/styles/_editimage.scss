@@ -3,16 +3,14 @@
 
   .box {
     height: 90vh;
-    .editable-img {
-      height: 50vh;
-      // canvas{
-      //   border: 1px solid black;
-      // }
-      img{
-        flex: 1;
-        height: 100%;
-      }
-    }
+    text-align: center;
+    // .editable-img {
+    //   height: 50vh;
+    //   img {
+    //     flex: 1;
+    //     height: 100%;
+    //   }
+    // }
   }
 
   .top {
@@ -101,12 +99,11 @@
 }
 
 @media (max-width: 800px) {
-
   .filter-type {
     margin-left: 14.25rem;
     margin-right: -0.75rem;
     margin-top: 1.25rem;
-}
+  }
 
   .section {
     padding: 0rem 1.5rem;
@@ -118,7 +115,6 @@
 }
 
 @media (max-width: 500px) {
-
   .box {
     overflow: scroll;
   }
@@ -127,16 +123,15 @@
     margin-right: -0.75rem;
     margin-top: 1.25rem;
     text-align: center;
-}
-.section {
-  height: 650px;
-}
-.button-process {
-  width: 200px !important;
-}
+  }
+  .section {
+    height: 650px;
+  }
+  .button-process {
+    width: 200px !important;
+  }
 
-.ImageEdit .box .editable-img img {
-height: 80%;
-}
-
+  .ImageEdit .box .editable-img img {
+    height: 80%;
+  }
 }

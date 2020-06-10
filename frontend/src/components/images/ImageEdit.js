@@ -15,10 +15,9 @@ function ImageEdit() {
   const { id: imageId } = useParams()
   const [image, setImage] = React.useState('')
   const [b64, setB64] = React.useState(null)
-  const [original, setOriginal] = React.useState(false)
   const [width, setWidth] = React.useState(null)
   const [height, setHeight] = React.useState(null)
-  const url = b64 ? b64 : image
+  const [url, setUrl] = React.useState('')
   const [im] = useImage(url, 'Anonimus')
   const imageRef = React.useRef()
   const [liveEffect, setliveEffect] = React.useState({
@@ -30,7 +29,17 @@ function ImageEdit() {
     enhance: 0,
     alpha: 1
   })
-  
+  const [appliedEffect, setAppliedEffect] = React.useState(true)
+  const defaultEffect = {
+    blur: 0,
+    brightness: 0,
+    embossStrength: 0.6,
+    embossActive: false,
+    grayscaleActive: false,
+    enhance: 0,
+    alpha: 1
+  }
+
 
   React.useEffect(() => {
     const getImage = async () => {
@@ -39,6 +48,7 @@ function ImageEdit() {
         if (!image) setImage(res.data.url)
         if (!height) setHeight(res.data.height)
         if (!width) setWidth(res.data.width)
+        setUrl(res.data.url)
       } catch (err) {
         console.log(err.response)
       }
@@ -56,15 +66,18 @@ function ImageEdit() {
 
   const imageChange = (image) => {
     setB64(image)
+    setUrl(image)
   }
 
   const showOriginal = () => {
     console.log('mouse has entered')
-    setOriginal(true)
+    setUrl(image)
+    setAppliedEffect(false)
   }
   const hideOriginal = () => {
+    setUrl(b64)
+    setAppliedEffect(true)
     console.log('mouse has left')
-    setOriginal(false)
   }
 
   const handleLiveChange = data => {
@@ -72,55 +85,58 @@ function ImageEdit() {
     setliveEffect(data)
   }
 
+  const resetEffects = () => {
+    setliveEffect(defaultEffect)
+  }
+
+  console.log(image)
+
   return (
     <div className="ImageEdit">
       <div className="box columns is-multiline">
-        <div className="edit-box">
+        <div className="edit-box column">
           <Stage width={width} height={height} >
             <Layer>
               <Image
                 ref={imageRef}
                 width={width}
                 height={height}
+                onMouseEnter={showOriginal}
+                onMouseLeave={hideOriginal}
                 x={0}
                 y={0}
                 image={im}
-                filters={ [
-                  Konva.Filters.Blur, 
+                filters={[
+                  Konva.Filters.Blur,
                   Konva.Filters.Brighten,
                   Konva.Filters.Contrast,
                   Konva.Filters.Enhance,
                   Konva.Filters.HSL,
                   //Konva.Filters.Kaleidoscope,
-                  
+
                   // * Have to pass the Konva filters a function even if they are not used to surpress warnings in the console.
-                  liveEffect.sepiaActive ? Konva.Filters.Sepia : function(){},
-                  liveEffect.embossActive ? Konva.Filters.Emboss : function(){},
-                  liveEffect.grayscaleActive ? Konva.Filters.Grayscale : function(){},
-                  liveEffect.invertActive ? Konva.Filters.Invert : function(){}
-                  
-                ] }
-                blurRadius={liveEffect.blur}
-                brightness={liveEffect.brightness}
-                contrast={liveEffect.contrast}
-                embossStrength={liveEffect.embossStrength}
-                enhance={liveEffect.enhance}
-                hue={liveEffect.hue}
-                saturation={liveEffect.saturation}
-                luminance={liveEffect.luminance}
-                
+                  liveEffect.sepiaActive && appliedEffect ? Konva.Filters.Sepia : function () { } ,
+                  liveEffect.embossActive && appliedEffect ? Konva.Filters.Emboss : function () { },
+                  liveEffect.grayscaleActive && appliedEffect ? Konva.Filters.Grayscale : function () { },
+                  liveEffect.invertActive && appliedEffect ? Konva.Filters.Invert : function () { }
+
+                ]}
+                blurRadius={appliedEffect ? liveEffect.blur : defaultEffect.blur}
+                brightness={appliedEffect ? liveEffect.brightness : defaultEffect.brightness}
+                contrast={appliedEffect ? liveEffect.contrast : defaultEffect.contrast}
+                embossStrength={appliedEffect ? liveEffect.embossStrength : defaultEffect.embossStrength}
+                enhance={appliedEffect ? liveEffect.enhance : defaultEffect.enhance}
+                hue={appliedEffect ? liveEffect.hue : defaultEffect.hue}
+                saturation={appliedEffect ? liveEffect.saturation : defaultEffect.saturation}
+                luminance={appliedEffect ? liveEffect.luminance : defaultEffect.luminance}
               />
             </Layer>
           </Stage>
+          <button onClick={resetEffects}>Reset</button>
         </div>
         <div>
-          <LiveEffects liveChange={handleLiveChange} feedback={liveEffect}/>
+          <LiveEffects liveChange={handleLiveChange} feedback={liveEffect} />
         </div>
-        {/* <div className="column is-full top editable-img">
-          {b64 && original === false && <img src={b64} alt="uploadedimg" onMouseEnter={showOriginal} />}
-          {!b64 && <img src={image} alt="uploadedimg" />}
-          {original && <img src={image} alt="uploadedimg" onMouseLeave={hideOriginal} />}
-        </div> */}
         <Filters url={image} handleImageChange={imageChange} />
         <button className="button button-process column is-one-quarter" onClick={() => triggerBase64Download(b64, 'my_download_name')}>Process Image</button>
         <Link to={`/edit/${imageId}/meme`} className="btn-meme column is-full">Make it a Meme</Link>
