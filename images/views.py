@@ -21,24 +21,32 @@ class ImageListView(APIView):
 
     def post(self, request):
         new_image = ImageSerializer(data=request.data)
-        
 
         try:
             if new_image.is_valid():
-                if Image.objects.filter(url = new_image.validated_data.get('url')).count() == 0:
-                  new_image.save()
+                if new_image.validated_data.get('url')[0:4] != 'http' and Image.objects.filter(url=new_image.validated_data.get('url')).count() == 0:
+                    new_image.save()
+
                 image_filtered = router(new_image.data.get('url'),  new_image.data.get(
                     'filter_type'), new_image.data.get('filter_options'))
                 print(image_filtered)
                 if image_filtered == None:
                     raise ValueError
                 encoded_image = encode(image_filtered)
-                result = Image.objects.filter(url = new_image.data.get('url'))
-                
-                for res in result:
-                  result_id = res.id
-                  result_width = res.width
-                  result_height = res.height
+                result = Image.objects.filter(url=new_image.data.get('url'))
+
+                if new_image.validated_data.get('url')[0:4] == 'http':
+                    for res in result:
+                        result_id = res.id
+                        result_width = res.width
+                        result_height = res.height
+                else:
+                    result_id = new_image.validated_data.get(
+                        'url').split('&&')[0]
+                    result_width = new_image.validated_data.get(
+                        'url').split('&&')[1]
+                    result_height = new_image.validated_data.get(
+                        'url').split('&&')[2]
 
                 return Response({'id': result_id, 'image': encoded_image, 'url': new_image.data.get('url'), 'width': result_width, 'height': result_height}, status=status.HTTP_201_CREATED)
             return Response(new_image.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)

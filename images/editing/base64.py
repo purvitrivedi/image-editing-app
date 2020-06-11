@@ -4,7 +4,7 @@ import os
 
 
 def encode(string):
-
+    print('i am in encoder')
     # Returns a string of base 64 characters of the image passed to it. This can be a URL or a filepath.
     # If it's a filepath the file will be deleted once the conversion is complete
     if string[0:4] == 'http':

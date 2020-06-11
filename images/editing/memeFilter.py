@@ -1,8 +1,10 @@
 from PIL import Image, ImageDraw, ImageFont
+import base64
 import requests
 from io import BytesIO
 import math
 my_font = 'images/editing/impact.ttf'
+import os
 
 output_filename = 'meme'
 
@@ -34,9 +36,15 @@ def btm_text_position(text):
 
 def meme(url, text):
 
-    response = requests.get(url)
-    im = Image.open(BytesIO(response.content))
-    
+    if url[0:4] != 'http': 
+        data = url.split('data:image/png;base64,')[1]
+        im = Image.open(BytesIO(base64.b64decode(data)))
+        im.save('image.png', 'PNG')
+        im = Image.open("image.png")
+    else:
+        response = requests.get(url)
+        im = Image.open(BytesIO(response.content))
+
     text = text.split('©π')
 
     # get an image
@@ -63,4 +71,6 @@ def meme(url, text):
 
     final_image = Image.alpha_composite(base, txt)
     final_image.save(f'{output_filename}.png')
+    if url[0:4] != 'http': 
+        os.remove('image.png')
     return output_filename

@@ -1,7 +1,7 @@
 import React from 'react'
 import { previewFilter } from '../../lib/api'
 
-function MemeView({ handleImageChange, image, handleClose }) {
+function MemeView({ handleImageChange, image, handleClose, width, height, base64, id }) {
   const [topText, setTopText] = React.useState('')
   const [bottomText, setBottomText] = React.useState('')
 
@@ -11,10 +11,15 @@ function MemeView({ handleImageChange, image, handleClose }) {
 
   const sendPostRequest = async () => {
     const text = `${topText}©π${bottomText}`
-    const res = await previewFilter({ url: image, filter_type: 'meme', filter_options: text })
+    let url
+    if (base64) {
+      url = `${id}&&${width}&&${height}&&${base64}`
+    } else {
+      url = image
+    }
+    const res = await previewFilter({ url: url, filter_type: 'meme', filter_options: text })
     handleImageChange(res.data.image)
   }
-
 
   return (
     <div className="MemeView">

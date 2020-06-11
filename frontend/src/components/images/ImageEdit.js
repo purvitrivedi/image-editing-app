@@ -236,7 +236,7 @@ function ImageEdit() {
           
 
           <LiveEffectChecks liveChange={handleLiveChange} feedback={liveEffect} className="column" />
-          {meme && <MemeView width={width} height={height} image={image} handleImageChange={imageChange} handleClose={disableMeme} />}
+          {meme && <MemeView width={width} height={height} image={image} handleImageChange={imageChange} handleClose={disableMeme} base64={b64} id={imageId}/>}
         </div>
         <LiveEffects liveChange={handleLiveChange} reset={resetEffects} feedback={liveEffect} className="column is-one-quarter" />
         <Filters url={image} handleImageChange={imageChange} />
