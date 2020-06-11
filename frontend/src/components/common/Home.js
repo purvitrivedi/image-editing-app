@@ -8,7 +8,7 @@ function Home() {
   const history = useHistory()
   const [imageData, setImageData] = React.useState(null)
 
-  const handleImageChange = (data) => {
+  const handleImageChange = data => {
     const { url, width, height } = data
     setImageData({
       url,
@@ -31,7 +31,6 @@ function Home() {
     handlePost()
   }, [imageData, history])
 
-console.log('imgdata', imageData)
   return (
     <>
       <UploadImage handleChange={handleImageChange} />

@@ -13,7 +13,19 @@ import useImage from 'use-image'
 import SaveImage from './SaveImage'
 
 
-
+const URLImage = ({ image }) => {
+  const [img] = useImage(image.src)
+  return (
+    <Image
+      image={img}
+      x={image.x}
+      y={image.y}
+      height={20}
+      width={20}
+      draggable="true"
+    />
+  )
+}
 
 function ImageEdit() {
   const { id: imageId } = useParams()
@@ -27,8 +39,8 @@ function ImageEdit() {
   const [showSave, setShowSave] = React.useState(false)
   const stageRef = React.useRef()
   const imageRef = React.useRef()
-  
-  
+
+
   const [liveEffect, setliveEffect] = React.useState({
     blur: 0,
     brightness: 0,
@@ -88,7 +100,7 @@ function ImageEdit() {
   const hideOriginal = () => {
     setAppliedEffect(true)
     setUrl(b64)
-    
+
     console.log('mouse has left')
   }
 
@@ -101,7 +113,7 @@ function ImageEdit() {
     setliveEffect(defaultEffect)
   }
 
-  
+
 
   const handleSaveImage = () => {
     const dataURL = stageRef.current.toDataURL()
@@ -111,6 +123,11 @@ function ImageEdit() {
     console.log('clicked')
     setMeme(true)
   }
+
+  const dragUrl = React.useRef()
+  const [images, setImages] = React.useState([])
+
+
 
   return (
     <div className="ImageEdit">
@@ -123,10 +140,49 @@ function ImageEdit() {
           }}>Process Image</button>
         </div>
         {showSave && <SaveImage imageData={dataURL} />}
-        <div className="edit-box column">
-          <Stage 
-            width={width} 
-            height={height} 
+
+        <div className="edit-box column"
+
+          onDrop={event => {
+            // register event position
+            stageRef.current.setPointersPositions(event)
+            // add image
+            setImages(
+              images.concat([
+                {
+                  ...stageRef.current.getPointerPosition(),
+                  src: dragUrl.current
+                }
+              ])
+            )
+          }}
+          onDragOver={event => event.preventDefault()}
+        >
+          <div className="column is-one-fifth">
+            <img
+              alt="lion"
+              src="https://www.iconexperience.com/_img/v_collection_png/256x256/shadow/heart.png"
+              draggable="true"
+              width={20}
+              onDragStart={event => {
+                dragUrl.current = event.target.src
+              }}
+              
+            />
+            <img
+              alt="lion"
+              src="https://freeiconshop.com/wp-content/uploads/edd/location-pin-compact-outline.png"
+              draggable="true"
+              width={20}
+              onDragStart={event => {
+                dragUrl.current = event.target.src
+              }}
+              
+            />
+          </div>
+          <Stage
+            width={width}
+            height={height}
             ref={stageRef}
             id="stage"
           >
@@ -164,6 +220,9 @@ function ImageEdit() {
                 saturation={appliedEffect ? liveEffect.saturation : defaultEffect.saturation}
                 luminance={appliedEffect ? liveEffect.luminance : defaultEffect.luminance}
               />
+              {images.map((image, i) => {
+                return <URLImage key={i} image={image} />
+              })}
             </Layer>
           </Stage>
           {meme && <MemeView />}
