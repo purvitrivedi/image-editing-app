@@ -10,6 +10,8 @@ import Konva from 'konva'
 import useImage from 'use-image'
 import SaveImage from './SaveImage'
 
+const revertButtonDefaultImage = 'https://res.cloudinary.com/jompra/image/upload/v1591872989/ImageEditor/Site%20Assets/RevertButton_ygagaj.png'
+const revertButtonDoneImage = 'https://res.cloudinary.com/jompra/image/upload/v1591872989/ImageEditor/Site%20Assets/DoneButton_rr77tc.png'
 
 const URLImage = ({ image }) => {
   const [img] = useImage(image.src)
@@ -25,6 +27,7 @@ const URLImage = ({ image }) => {
   )
 }
 
+
 function ImageEdit() {
   const { id: imageId } = useParams()
   const [image, setImage] = React.useState('')
@@ -35,9 +38,12 @@ function ImageEdit() {
   const [im] = useImage(url, 'anonymous')
   const [dataURL, setDataURL] = React.useState('')
   const [showSave, setShowSave] = React.useState(false)
+  const [showRevert, setShowRevert] = React.useState(false)
+  const [revertButtonImage, setRevertButtonImage] = React.useState('https://res.cloudinary.com/jompra/image/upload/v1591872989/ImageEditor/Site%20Assets/RevertButton_ygagaj.png')
   const stageRef = React.useRef()
   const imageRef = React.useRef()
-
+  const [images, setImages] = React.useState([])
+  const dragUrl = React.useRef()
 
   const [liveEffect, setliveEffect] = React.useState({
     blur: 0,
@@ -91,12 +97,14 @@ function ImageEdit() {
 
   const showOriginal = () => {
     setUrl(image)
+    setShowRevert(true)
     setAppliedEffect(false)
     console.log('mouse has entered')
   }
 
   const hideOriginal = () => {
     setAppliedEffect(true)
+    setShowRevert(false)
     setUrl(b64)
     console.log('mouse has left')
   }
@@ -125,11 +133,27 @@ function ImageEdit() {
     setMeme(false)
   }
 
-  const dragUrl = React.useRef()
-  const [images, setImages] = React.useState([])
-
-
-
+  
+  
+  const RevertIcon = () => {
+    const [revertButton] = useImage(revertButtonImage)
+    return <Image 
+      image={revertButton}
+      width={150}
+      height={50}
+      x={width - 200}
+      y={20}
+      onClick={ () => {
+        resetEffects()
+        setRevertButtonImage(revertButtonDoneImage)
+        setImages([])
+        setTimeout(() => {
+          setRevertButtonImage(revertButtonDefaultImage)
+        }, 3000)
+      }}
+    />
+  }
+  console.log(showRevert)
   return (
     <div className="ImageEdit">
       <div className="box columns is-multiline">
@@ -162,17 +186,16 @@ function ImageEdit() {
         >
           <div className="column is-one-fifth">
             <img
-              alt="lion"
+              alt="Heart"
               src="https://www.iconexperience.com/_img/v_collection_png/256x256/shadow/heart.png"
               draggable="true"
               width={20}
               onDragStart={event => {
                 dragUrl.current = event.target.src
               }}
-
             />
             <img
-              alt="lion"
+              alt="map pin"
               src="https://freeiconshop.com/wp-content/uploads/edd/location-pin-compact-outline.png"
               draggable="true"
               width={20}
@@ -228,12 +251,14 @@ function ImageEdit() {
                 {images.map((image, i) => {
                   return <URLImage key={i} image={image} />
                 })}
+                
+                {showRevert && <RevertIcon />}
               </Layer>
             </Stage>
 
           </div>
 
-          
+
 
           <LiveEffectChecks liveChange={handleLiveChange} feedback={liveEffect} className="column" />
           {meme && <MemeView width={width} height={height} image={image} handleImageChange={imageChange} handleClose={disableMeme} />}
