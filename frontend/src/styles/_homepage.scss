@@ -5,6 +5,10 @@ nav {
     font-weight: 900;
     font-family: "Helvetica Neue";
   }
+
+  .navbar-item:hover{
+    color: inherit;
+  }
 }
 .box {
   margin: 0px 40px 40px 40px;

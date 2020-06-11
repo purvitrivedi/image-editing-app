@@ -4,7 +4,6 @@ import { previewFilter } from '../../lib/api'
 function MemeView({ handleImageChange, image }) {
   const [topText, setTopText] = React.useState('')
   const [bottomText, setBottomText] = React.useState('')
-  const [processed, setProcessed] = React.useState(false)
 
   const handleChange = (event) => {
     event.target.name === 'topText' ? setTopText(event.target.value) : setBottomText(event.target.value)
@@ -14,7 +13,6 @@ function MemeView({ handleImageChange, image }) {
     const text = `${topText}©π${bottomText}`
     const res = await previewFilter({ url: image, filter_type: 'meme', filter_options: text })
     handleImageChange(res.data.image)
-    setProcessed(true)
   }
 
   console.log(image)

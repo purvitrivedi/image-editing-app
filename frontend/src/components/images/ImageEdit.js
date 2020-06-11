@@ -1,6 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { triggerBase64Download } from 'react-base64-downloader'
 import { useParams } from 'react-router-dom'
 import { getSingleImage } from '../../lib/api'
 import LiveEffects from './LiveEffects'
@@ -48,7 +46,7 @@ function ImageEdit() {
     enhance: 0,
     alpha: 1
   }
-  const [meme, setMeme] = React.useState(true)
+  const [meme, setMeme] = React.useState(false)
 
 
   React.useEffect(() => {
@@ -80,6 +78,7 @@ function ImageEdit() {
   }
 
   const showOriginal = () => {
+    setB64(image)
     setUrl(image)
     setAppliedEffect(false)
     console.log('mouse has entered')
@@ -113,31 +112,21 @@ function ImageEdit() {
     <div className="ImageEdit">
       <div className="box columns is-multiline">
         <div className="column is-full columns buttons">
-<<<<<<< HEAD
           <button className=" btn-meme column is-three-quarter" onClick={enableMeme}>Make it a Meme</button>
           <button className=" btn-reset column is-one-quarter" onClick={resetEffects}>Reset</button>
-          <button className=" button-process column is-one-quarter" onClick={() => triggerBase64Download(b64, 'my_download_name')}>Process Image</button>
-
-=======
-          <button className="btn-meme column is-one-quarter" onClick={enableMeme}>Make it a Meme</button>
-          <button className="button button-process column is-one-quarter" onClick={() => {
+          <button className="button-process column is-one-quarter" onClick={() => {
             handleSaveImage()
             setShowSave(true)
           }}>Process Image</button>
->>>>>>> development
         </div>
         {showSave && <SaveImage imageData={dataURL} />}
         <div className="edit-box column">
-<<<<<<< HEAD
-          <Stage width={width} height={height}>
-=======
           <Stage 
             width={width} 
             height={height} 
             ref={stageRef}
             id="stage"
           >
->>>>>>> development
             <Layer>
               <Image
                 ref={imageRef}
