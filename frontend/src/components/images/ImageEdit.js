@@ -121,6 +121,10 @@ function ImageEdit() {
     setMeme(true)
   }
 
+  const disableMeme = () => {
+    setMeme(false)
+  }
+
   const dragUrl = React.useRef()
   const [images, setImages] = React.useState([])
 
@@ -130,12 +134,12 @@ function ImageEdit() {
     <div className="ImageEdit">
       <div className="box columns is-multiline">
         <div className="column is-full columns buttons">
-          <button className=" btn-meme column is-three-quarter" onClick={enableMeme}>Make it a Meme</button>
-          <button className=" btn-reset column is-one-quarter" onClick={resetEffects}>Reset</button>
+          <button className="btn-meme column is-three-quarter" onClick={enableMeme}>Make it a Meme</button>
+          <button className="btn-reset column is-one-quarter" onClick={resetEffects}>Revert</button>
           <button className="button-process column is-one-quarter" onClick={() => {
             handleSaveImage()
             setShowSave(true)
-          }}>Process Image</button>
+          }}>Save Image</button>
         </div>
         {showSave && <SaveImage imageData={dataURL} />}
 
@@ -165,7 +169,7 @@ function ImageEdit() {
               onDragStart={event => {
                 dragUrl.current = event.target.src
               }}
-              
+
             />
             <img
               alt="lion"
@@ -175,56 +179,64 @@ function ImageEdit() {
               onDragStart={event => {
                 dragUrl.current = event.target.src
               }}
-              
+
             />
           </div>
-          <Stage
-            width={width}
-            height={height}
-            ref={stageRef}
-            id="stage"
-          >
-            <Layer>
-              <Image
-                ref={imageRef}
-                width={width}
-                height={height}
-                onMouseEnter={showOriginal}
-                onMouseLeave={hideOriginal}
-                x={0}
-                y={0}
-                image={im}
-                filters={[
-                  Konva.Filters.Blur,
-                  Konva.Filters.Brighten,
-                  Konva.Filters.Contrast,
-                  Konva.Filters.Enhance,
-                  Konva.Filters.HSL,
-                  //Konva.Filters.Kaleidoscope,
+          <div>
 
-                  // * Have to pass the Konva filters a function even if they are not used to surpress warnings in the console.
-                  liveEffect.sepiaActive && appliedEffect ? Konva.Filters.Sepia : function () { },
-                  liveEffect.embossActive && appliedEffect ? Konva.Filters.Emboss : function () { },
-                  liveEffect.grayscaleActive && appliedEffect ? Konva.Filters.Grayscale : function () { },
-                  liveEffect.invertActive && appliedEffect ? Konva.Filters.Invert : function () { }
+            <Stage
+              width={width}
+              height={height}
+              ref={stageRef}
+              id="stage"
+            >
 
-                ]}
-                blurRadius={appliedEffect ? liveEffect.blur : defaultEffect.blur}
-                brightness={appliedEffect ? liveEffect.brightness : defaultEffect.brightness}
-                contrast={appliedEffect ? liveEffect.contrast : defaultEffect.contrast}
-                embossStrength={appliedEffect ? liveEffect.embossStrength : defaultEffect.embossStrength}
-                enhance={appliedEffect ? liveEffect.enhance : defaultEffect.enhance}
-                hue={appliedEffect ? liveEffect.hue : defaultEffect.hue}
-                saturation={appliedEffect ? liveEffect.saturation : defaultEffect.saturation}
-                luminance={appliedEffect ? liveEffect.luminance : defaultEffect.luminance}
-              />
-              {images.map((image, i) => {
-                return <URLImage key={i} image={image} />
-              })}
-            </Layer>
-          </Stage>
+              <Layer>
+                <Image
+                  ref={imageRef}
+                  width={width}
+                  height={height}
+                  onMouseEnter={showOriginal}
+                  onMouseLeave={hideOriginal}
+                  x={0}
+                  y={0}
+                  image={im}
+                  filters={[
+                    Konva.Filters.Blur,
+                    Konva.Filters.Brighten,
+                    Konva.Filters.Contrast,
+                    Konva.Filters.Enhance,
+                    Konva.Filters.HSL,
+                    //Konva.Filters.Kaleidoscope,
+
+                    // * Have to pass the Konva filters a function even if they are not used to surpress warnings in the console.
+                    liveEffect.sepiaActive && appliedEffect ? Konva.Filters.Sepia : function () { },
+                    liveEffect.embossActive && appliedEffect ? Konva.Filters.Emboss : function () { },
+                    liveEffect.grayscaleActive && appliedEffect ? Konva.Filters.Grayscale : function () { },
+                    liveEffect.invertActive && appliedEffect ? Konva.Filters.Invert : function () { }
+
+                  ]}
+                  blurRadius={appliedEffect ? liveEffect.blur : defaultEffect.blur}
+                  brightness={appliedEffect ? liveEffect.brightness : defaultEffect.brightness}
+                  contrast={appliedEffect ? liveEffect.contrast : defaultEffect.contrast}
+                  embossStrength={appliedEffect ? liveEffect.embossStrength : defaultEffect.embossStrength}
+                  enhance={appliedEffect ? liveEffect.enhance : defaultEffect.enhance}
+                  hue={appliedEffect ? liveEffect.hue : defaultEffect.hue}
+                  saturation={appliedEffect ? liveEffect.saturation : defaultEffect.saturation}
+                  luminance={appliedEffect ? liveEffect.luminance : defaultEffect.luminance}
+                />
+                {images.map((image, i) => {
+                  return <URLImage key={i} image={image} />
+                })}
+              </Layer>
+            </Stage>
+
+          </div>
+
+          
+
           <LiveEffectChecks liveChange={handleLiveChange} feedback={liveEffect} className="column" />
-          {meme && <MemeView width={width} height={height} image={image} handleImageChange={imageChange}/>}
+          {meme && <MemeView width={width} height={height} image={image} handleImageChange={imageChange} handleClose={disableMeme} />}
         </div>
         <LiveEffects liveChange={handleLiveChange} reset={resetEffects} feedback={liveEffect} className="column is-one-quarter" />
         <Filters url={image} handleImageChange={imageChange} />

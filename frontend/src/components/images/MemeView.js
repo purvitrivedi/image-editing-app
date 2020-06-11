@@ -1,7 +1,7 @@
 import React from 'react'
 import { previewFilter } from '../../lib/api'
 
-function MemeView({ handleImageChange, image }) {
+function MemeView({ handleImageChange, image, handleClose }) {
   const [topText, setTopText] = React.useState('')
   const [bottomText, setBottomText] = React.useState('')
 
@@ -15,13 +15,14 @@ function MemeView({ handleImageChange, image }) {
     handleImageChange(res.data.image)
   }
 
-  console.log(image)
-
 
   return (
     <div className="MemeView">
       <div className="columns is-multiline meme">
         <div className="column right-meme columns is-multiline">
+          <div className="field column is-full">
+            <p onClick={handleClose}><i className="fas fa-times"></i></p>
+          </div>
           <div className="field column is-full">
             <input
               type="text"
@@ -45,7 +46,7 @@ function MemeView({ handleImageChange, image }) {
           <div className="field column is-full">
             <div className="save-btn button"
               onClick={sendPostRequest}
-            >Memify</div>
+            >Meme it</div>
           </div>
         </div>
 
