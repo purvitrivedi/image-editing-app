@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-function LiveEffectsChecks({ liveChange, feedback, reset }) {
+function LiveEffectsChecks({ liveChange, feedback }) {
 
   const handleChange = event => {
     const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value
@@ -47,6 +47,7 @@ function LiveEffectsChecks({ liveChange, feedback, reset }) {
             onChange={handleChange}
           /></div>
       </div>
+      
     </div>
   )
 }

@@ -66,8 +66,8 @@ function Filters({ url, handleImageChange }) {
   }
 
   return (
-    <section className="section column is-full">
-      <div className="filters column is-full">
+    <section className="section">
+      <div className="filters">
         {!loading
           &&
           <button
