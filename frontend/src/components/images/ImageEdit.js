@@ -38,6 +38,7 @@ function ImageEdit() {
   const [dataURL, setDataURL] = React.useState('')
   const [showSave, setShowSave] = React.useState(false)
   const [showRevert, setShowRevert] = React.useState(false)
+  const [showUndoSaveBtns, setUndoSaveBtns] = React.useState(false)
 
   const stageRef = React.useRef()
   const imageRef = React.useRef()
@@ -93,7 +94,6 @@ function ImageEdit() {
   }, [im])
 
   const handleIconChange = ref => {
-    console.log('icon', ref)
     dragUrl.current = ref
   }
 
@@ -102,6 +102,7 @@ function ImageEdit() {
   })
 
   const imageChange = (image) => {
+    setUndoSaveBtns(true)
     setB64(image)
     setUrl(image)
     setPreviewLoading(false)
@@ -123,6 +124,7 @@ function ImageEdit() {
 
   const handleLiveChange = data => {
     setliveEffect(data)
+    setUndoSaveBtns(true)
   }
 
   const resetEffects = () => {
@@ -131,7 +133,6 @@ function ImageEdit() {
     setB64('')
     // setShowRevert(false)
   }
-
 
 
   const handleSaveImage = () => {
@@ -163,21 +164,25 @@ function ImageEdit() {
     />
   }
 
-  console.log(url)
 
   return (
     <div className="ImageEdit">
       <div className="box columns is-multiline">
         <div className="column is-full columns buttons">
-          <button className="btn-meme column is-three-quarter" onClick={enableMeme}>Make it a Meme</button>
-          <button className="btn-reset column is-one-quarter" onClick={resetEffects}>Revert</button>
-          <button className="button-process column is-one-quarter" onClick={() => {
+          {!showSave && <button className="btn-meme column is-three-quarter" onClick={enableMeme}>Make it a Meme</button>}
+          {!showSave && showUndoSaveBtns && <button className="btn-reset column is-one-quarter" onClick={resetEffects}>Reset</button>}
+          {!showSave && showUndoSaveBtns && <button className="button-process column is-one-quarter" onClick={() => {
             handleSaveImage()
             setShowSave(true)
-          }}>Save Image</button>
+          }}>Save Image
+          </button>
+          }
+          {/* <button className="button-process column is-one-quarter" onClick={() => {
+            handleSaveImage()
+            setShowSave(true)
+          }}>Save Image
+          </button> */}
         </div>
-        {showSave && <SaveImage imageData={dataURL} />}
-
         <div className="edit-box column"
           style={{ width: width, height: height + 40 }}
           onDrop={event => {
@@ -243,7 +248,7 @@ function ImageEdit() {
                   return <URLImage key={i} image={image} />
                 })}
 
-                {showRevert && <RevertIcon />}
+                {/* {showRevert && <RevertIcon />} */}
               </Layer>
             </Stage>}
             {previewLoading &&
@@ -267,11 +272,12 @@ function ImageEdit() {
 
 
 
-          {!previewLoading && <LiveEffectChecks liveChange={handleLiveChange} feedback={liveEffect} className="column" />}
-          {meme && <MemeView width={width} height={height} image={image} handleImageChange={imageChange} handleClose={disableMeme} base64={b64} id={imageId} />}
+          {!previewLoading && !showSave && <LiveEffectChecks liveChange={handleLiveChange} feedback={liveEffect} className="column" />}
+          {meme && !showSave && <MemeView width={width} height={height} image={image} handleImageChange={imageChange} handleClose={disableMeme} base64={b64} id={imageId} />}
         </div>
-        <LiveEffects liveChange={handleLiveChange} reset={resetEffects} feedback={liveEffect} className="column is-one-quarter" />
-        <Filters url={image} handleImageChange={imageChange} handleIconChange={handleIconChange} setPreviewLoading={setPreviewLoading} />
+        {!showSave && <LiveEffects liveChange={handleLiveChange} reset={resetEffects} feedback={liveEffect} className="column is-one-quarter" />}
+        {!showSave && <Filters url={image} handleImageChange={imageChange} handleIconChange={handleIconChange} setPreviewLoading={setPreviewLoading} />}
+        {showSave && <SaveImage imageData={dataURL} className="column" height={height}/>}
       </div>
     </div>
   )

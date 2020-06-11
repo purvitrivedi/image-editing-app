@@ -3,7 +3,7 @@
 
   .buttons {
     justify-content: space-between;
-    margin-top: 0em;
+    margin-top: -1.5em;
     margin-bottom: -2em;
     padding: 0em;
     background-color: transparent;
@@ -21,6 +21,20 @@
       outline: none !important;
     }
 
+    .button-process,
+    .btn-reset {
+      animation: appear 2s;
+    }
+
+    @keyframes appear {
+      0% {
+        opacity: 0%;
+      }
+      100% {
+        opacity: 100%;
+      }
+    }
+    
     .btn-meme {
       padding-left: 40px;
       background-color: transparent;
@@ -29,7 +43,7 @@
     }
 
     .btn-reset {
-      width:60px;
+      width: 60px;
       outline: none;
     }
   }
@@ -230,8 +244,7 @@
   padding: 11px 12px;
 }
 
-
-.loading-image{
+.loading-image {
   height: 500px;
   vertical-align: middle;
 }

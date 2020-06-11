@@ -1,0 +1,75 @@
+.SaveImage {
+  margin-left: 100px;
+  font-family: "Helvetica Neue";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 0;
+
+  input {
+    border-radius: 5px;
+    font-family: "Helvetica Neue";
+    font-size: 13px;
+    text-align: center;
+    width: 70%;
+    height: 40px;
+    border: 1px solid rgb(206, 192, 192);
+    animation: expand 3s;
+  }
+
+
+
+  label {
+    font-size: 20px;
+  }
+
+  button {
+    margin: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    text-align: center;
+    background-color: black;
+    color: white;
+    font-weight: 800;
+    width: 150px;
+    display: inline-block;
+    padding: 11px 12px;
+    cursor: pointer;
+    border: none;
+  }
+
+  .embed, .share, .download {
+    position: relative;
+    align-self: center;
+  }
+
+  .animate-this{
+    animation: expand 3s;
+  }
+  .button-animate{
+    animation: text-appear 2s;
+  }
+  .animate-button{
+    animation: text-appear-2 2s;
+  }
+
+  @keyframes text-appear {
+    0%   {color: transparent;}
+    100% {color: white;} 
+  }
+  
+  @keyframes text-appear-2 {
+    0%   {color: transparent;}
+    100% {color: white;} 
+  }
+
+@keyframes expand {
+  0%   {opacity: 0; width: 10%;}
+  100% {opacity: 1; width: 70%;} 
+}
+
+}
+
+.loading {
+margin:20px 0px;
+}

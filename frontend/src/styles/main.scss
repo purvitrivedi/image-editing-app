@@ -1,6 +1,10 @@
+html {
+  font-family: "Helvetica Neue";
+}
 
 @import '~bulma/bulma.sass';
 @import 'homepage';
 @import 'editimage';
 @import 'meme';
 @import 'inputrange';
+@import 'saveimage';
