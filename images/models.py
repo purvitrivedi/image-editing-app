@@ -10,7 +10,7 @@ def validate_filter(value):
 
 
 class Image(models.Model):
-    url = models.CharField(max_length=200)
+    url = models.TextField()
     filter_type = models.CharField(
         max_length=10, null=True, validators=[validate_filter])
     filter_options = models.CharField(max_length=200, null=True)

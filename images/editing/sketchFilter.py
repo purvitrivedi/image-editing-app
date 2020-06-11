@@ -46,5 +46,4 @@ def sketch(path, type, thumbnail=False):
         output_filename = path.strip('.png')
 
     plt.savefig(f'{output_filename}.png', bbox_inches='tight', pad_inches=0)
-
     return str(output_filename)
