@@ -4,7 +4,7 @@ import Loader from 'react-spinners/PropagateLoader'
 
 import { getThumbnails, previewFilter } from '../../lib/api'
 
-function Filters({ url, handleImageChange }) {
+function Filters({ url, handleImageChange, handleIconChange, setPreviewLoading }) {
 
   const [thumbnails, setThumbnails] = React.useState([])
   const [requestPage, setRequestPage] = React.useState(1)
@@ -12,6 +12,7 @@ function Filters({ url, handleImageChange }) {
   const [loading, setLoading] = React.useState(false)
   const [leftArrowDisabled, setLeftArrowDisabled] = React.useState(true)
   const [rightArrowDisabled, setRightArrowDisabled] = React.useState(false)
+
 
   const changePage = (event) => {
     if (filterType === 'sketch' && requestPage === 1 && event.currentTarget.value === 'right')
@@ -39,8 +40,8 @@ function Filters({ url, handleImageChange }) {
     setLeftArrowDisabled(true)
     setRightArrowDisabled(false)
     setFilterType(event.target.value)
+    console.log(event.target.value)
   }
-
 
   React.useEffect(() => {
     const sendThumbnailRequest = async () => {
@@ -57,6 +58,7 @@ function Filters({ url, handleImageChange }) {
   }, [url, requestPage, filterType])
 
   const preview = async (event) => {
+    setPreviewLoading(true)
     try {
       const response = await previewFilter({ url: url, filter_type: filterType, filter_options: event.target.alt })
       handleImageChange(response.data.image)
@@ -69,6 +71,8 @@ function Filters({ url, handleImageChange }) {
     <section className="section">
       <div className="filters">
         {!loading
+          && (filterType !== 'collage'
+            && filterType !== 'emoji')
           &&
           <button
             className={leftArrowDisabled ? 'button filter btn-page arrow-disabled' : 'button filter btn-page'}
@@ -76,9 +80,23 @@ function Filters({ url, handleImageChange }) {
             onClick={leftArrowDisabled ? null : changePage}>
             <i className="fas fa-chevron-left"></i>
           </button>}
-        {!loading && thumbnails.map(thumbnail => {
+        {!loading && filterType !== 'emoji' && thumbnails.map(thumbnail => {
           return (
             <img className="filter" src={thumbnail.image} alt={thumbnail.option} key={thumbnail.option} onClick={preview} />
+          )
+        })}
+        {!loading && filterType === 'emoji' && thumbnails.map(thumbnail => {
+          return (
+            <img
+              className="filter emoji-thumbs"
+              src={thumbnail.image}
+              alt={thumbnail.option}
+              key={thumbnail.option}
+              draggable="true"
+              onDragStart={event => {
+                handleIconChange(event.target.src)
+              }}
+            />
           )
         })}
         {loading &&
@@ -99,7 +117,8 @@ function Filters({ url, handleImageChange }) {
           </LoadingOverlay>
         }
         {!loading
-          && filterType !== 'collage'
+          && (filterType !== 'collage'
+            && filterType !== 'emoji')
           &&
           <button
             className={rightArrowDisabled ? 'button btn-page filter arrow-disabled' : 'button btn-page filter'}
@@ -112,6 +131,7 @@ function Filters({ url, handleImageChange }) {
         <button className={filterType === 'sketch' ? 'type-selected' : ''} onClick={changeFilterType} value="sketch">Tint</button>
         <button className={filterType === 'histogram' ? 'type-selected' : ''} onClick={changeFilterType} value="histogram">Histogram</button>
         <button className={filterType === 'collage' ? 'type-selected' : ''} onClick={changeFilterType} value="collage">Artist Brush</button>
+        <button className={filterType === 'emoji' ? 'type-selected' : ''} onClick={changeFilterType} value="emoji">Emoji</button>
       </div>
     </section>
   )

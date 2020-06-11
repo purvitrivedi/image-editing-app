@@ -6,6 +6,7 @@ from .editing.sketchFilter import sketch
 from .editing.histogramFilter import histogram
 from .editing.collageFilter import collage
 from .models import Filter
+from .editing.base64 import encode
 import base64
 import os
 
@@ -13,14 +14,17 @@ import os
 
 
 def get_thumbs(img, filter, page):
+    if filter != 'emoji':
+      resize_image(img)
 
-    resize_image(img)
     if filter == 'sketch':
         result = get_sketch_thumbs(img, page)
     elif filter == 'histogram':
         result = get_histogram_thumbs(img, page)
     elif filter == 'collage':
         result = get_collage_thumbs(img, page)
+    elif filter == 'emoji':
+        result = get_emoji_thumbs()
     return result
 
 
@@ -82,14 +86,6 @@ def get_histogram_thumbs(img, page):
         os.remove(f'{file_name}.png')
     return thumb_dictionaries
 
-    for reference in histogram_options:
-        file_name = histogram(img, reference.filter_option, thumbnail=True)
-        encoded_image = str(base64.b64encode(
-            open(f'{file_name}.png', 'rb').read()))[2:-1]
-        thumb_dictionaries.append(
-            {'option': reference.filter_option, 'image': f'data:image/png;base64,{encoded_image}'})
-        os.remove(f'{file_name}.png')
-    return thumb_dictionaries
 
 
 def get_collage_thumbs(img, page):
@@ -99,9 +95,20 @@ def get_collage_thumbs(img, page):
 
     for option in collage_options:
         file_name = collage(img, option.filter_option, thumbnail=True)
-        encoded_image = str(base64.b64encode(
-            open(f'{file_name}.png', 'rb').read()))[2:-1]
+        encoded_image = str(base64.b64encode(open(f'{file_name}.png', 'rb').read()))[2:-1]
         thumb_dictionaries.append(
             {'option': option.filter_option, 'image': f'data:image/png;base64,{encoded_image}'})
         os.remove(f'{file_name}.png')
     return thumb_dictionaries
+
+def get_emoji_thumbs():
+    emoji_dictionaries = []
+
+    emoji_options = Filter.objects.filter(related_filter='emoji')
+
+    for emoji in emoji_options:
+    
+        encoded_image = encode(emoji.filter_option)
+
+        emoji_dictionaries.append({'option': emoji.filter_option, 'image': encoded_image})
+    return emoji_dictionaries

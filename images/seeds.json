@@ -645,7 +645,7 @@
     "fields": {
       "related_filter": "sketch",
       "filter_option": "Accent_r"
-    } 
+    }
   },
   {
     "model": "images.filter",
@@ -845,6 +845,46 @@
     "fields": {
       "related_filter": "collage",
       "filter_option": "pixel"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 189,
+    "fields": {
+      "related_filter": "emoji",
+      "filter_option": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/72/apple/237/heavy-black-heart_2764.png"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 190,
+    "fields": {
+      "related_filter": "emoji",
+      "filter_option": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/72/apple/237/hand-with-index-and-middle-fingers-crossed_1f91e.png"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 191,
+    "fields": {
+      "related_filter": "emoji",
+      "filter_option": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/72/apple/237/clapping-hands-sign_1f44f.png"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 192,
+    "fields": {
+      "related_filter": "emoji",
+      "filter_option": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/72/apple/237/thumbs-up-sign_1f44d.png"
+    }
+  },
+  {
+    "model": "images.filter",
+    "pk": 193,
+    "fields": {
+      "related_filter": "emoji",
+      "filter_option": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/72/apple/237/thumbs-down-sign_1f44e.png"
     }
   }
 ]

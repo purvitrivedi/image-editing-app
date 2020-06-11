@@ -24,8 +24,9 @@ class ImageListView(APIView):
 
         try:
             if new_image.is_valid():
-                if new_image.validated_data.get('url')[0:4] != 'http' and Image.objects.filter(url=new_image.validated_data.get('url')).count() == 0:
+                if new_image.validated_data.get('url')[0:4] == 'http' and Image.objects.filter(url=new_image.validated_data.get('url')).count() == 0:
                     new_image.save()
+                    
 
                 image_filtered = router(new_image.data.get('url'),  new_image.data.get(
                     'filter_type'), new_image.data.get('filter_options'))
@@ -35,6 +36,7 @@ class ImageListView(APIView):
                 encoded_image = encode(image_filtered)
                 result = Image.objects.filter(url=new_image.data.get('url'))
 
+                
                 if new_image.validated_data.get('url')[0:4] == 'http':
                     for res in result:
                         result_id = res.id

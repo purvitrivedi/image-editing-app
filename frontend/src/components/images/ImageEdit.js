@@ -9,9 +9,8 @@ import { Stage, Layer, Image } from 'react-konva'
 import Konva from 'konva'
 import useImage from 'use-image'
 import SaveImage from './SaveImage'
-
-const revertButtonDefaultImage = 'https://res.cloudinary.com/jompra/image/upload/v1591872989/ImageEditor/Site%20Assets/RevertButton_ygagaj.png'
-const revertButtonDoneImage = 'https://res.cloudinary.com/jompra/image/upload/v1591872989/ImageEditor/Site%20Assets/DoneButton_rr77tc.png'
+import LoadingOverlay from 'react-loading-overlay'
+import Loader from 'react-spinners/PropagateLoader'
 
 const URLImage = ({ image }) => {
   const [img] = useImage(image.src)
@@ -20,8 +19,8 @@ const URLImage = ({ image }) => {
       image={img}
       x={image.x}
       y={image.y}
-      height={20}
-      width={20}
+      height={40}
+      width={40}
       draggable="true"
     />
   )
@@ -39,11 +38,14 @@ function ImageEdit() {
   const [dataURL, setDataURL] = React.useState('')
   const [showSave, setShowSave] = React.useState(false)
   const [showRevert, setShowRevert] = React.useState(false)
-  const [revertButtonImage, setRevertButtonImage] = React.useState('https://res.cloudinary.com/jompra/image/upload/v1591872989/ImageEditor/Site%20Assets/RevertButton_ygagaj.png')
+
   const stageRef = React.useRef()
   const imageRef = React.useRef()
   const [images, setImages] = React.useState([])
   const dragUrl = React.useRef()
+  const iconRef = React.useRef(null)
+  const [previewLoading, setPreviewLoading] = React.useState(false)
+
 
   const [liveEffect, setliveEffect] = React.useState({
     blur: 0,
@@ -66,7 +68,7 @@ function ImageEdit() {
   }
   const [meme, setMeme] = React.useState(false)
 
-
+  const revertButtonImage = 'https://res.cloudinary.com/dx8pt11io/image/upload/v1591890795/download_5_brgk58.png'
   React.useEffect(() => {
     const getImage = async () => {
       try {
@@ -90,15 +92,25 @@ function ImageEdit() {
     }
   }, [im])
 
+  const handleIconChange = ref => {
+    console.log('icon', ref)
+    dragUrl.current = ref
+  }
+
+  React.useEffect(() => {
+    console.log(iconRef.current, 'Parent Component')
+  })
+
   const imageChange = (image) => {
     setB64(image)
     setUrl(image)
+    setPreviewLoading(false)
   }
 
   const showOriginal = () => {
     setUrl(image)
-    setShowRevert(true)
     setAppliedEffect(false)
+    if (url === b64) setShowRevert(true)
     console.log('mouse has entered')
   }
 
@@ -117,6 +129,7 @@ function ImageEdit() {
     setliveEffect(defaultEffect)
     setUrl(image)
     setB64('')
+    // setShowRevert(false)
   }
 
 
@@ -133,27 +146,25 @@ function ImageEdit() {
     setMeme(false)
   }
 
-  
-  
+
+
   const RevertIcon = () => {
     const [revertButton] = useImage(revertButtonImage)
-    return <Image 
+    return <Image
       image={revertButton}
-      width={150}
-      height={50}
-      x={width - 200}
-      y={20}
-      onClick={ () => {
+      width={30}
+      height={30}
+      x={width - 40}
+      y={10}
+      onClick={() => {
         resetEffects()
-        setRevertButtonImage(revertButtonDoneImage)
         setImages([])
-        setTimeout(() => {
-          setRevertButtonImage(revertButtonDefaultImage)
-        }, 3000)
       }}
     />
   }
-  console.log(showRevert)
+
+  console.log(url)
+
   return (
     <div className="ImageEdit">
       <div className="box columns is-multiline">
@@ -168,7 +179,7 @@ function ImageEdit() {
         {showSave && <SaveImage imageData={dataURL} />}
 
         <div className="edit-box column"
-
+          style={{ width: width, height: height + 40 }}
           onDrop={event => {
             // register event position
             stageRef.current.setPointersPositions(event)
@@ -184,30 +195,10 @@ function ImageEdit() {
           }}
           onDragOver={event => event.preventDefault()}
         >
-          <div className="column is-one-fifth">
-            <img
-              alt="Heart"
-              src="https://www.iconexperience.com/_img/v_collection_png/256x256/shadow/heart.png"
-              draggable="true"
-              width={20}
-              onDragStart={event => {
-                dragUrl.current = event.target.src
-              }}
-            />
-            <img
-              alt="map pin"
-              src="https://freeiconshop.com/wp-content/uploads/edd/location-pin-compact-outline.png"
-              draggable="true"
-              width={20}
-              onDragStart={event => {
-                dragUrl.current = event.target.src
-              }}
 
-            />
-          </div>
           <div>
 
-            <Stage
+            {!previewLoading && <Stage
               width={width}
               height={height}
               ref={stageRef}
@@ -251,20 +242,36 @@ function ImageEdit() {
                 {images.map((image, i) => {
                   return <URLImage key={i} image={image} />
                 })}
-                
+
                 {showRevert && <RevertIcon />}
               </Layer>
-            </Stage>
-
+            </Stage>}
+            {previewLoading &&
+              <LoadingOverlay
+                className="loading-image"
+                active={previewLoading}
+                spinner={<Loader />}
+                styles={{
+                  spinner: (base) => ({
+                    ...base,
+                    width: '50px',
+                    '& svg circle': {
+                      stroke: 'rgba(0, 0, 0, 1)'
+                    }
+                  })
+                }}
+              >
+              </LoadingOverlay>
+            }
           </div>
 
 
 
-          <LiveEffectChecks liveChange={handleLiveChange} feedback={liveEffect} className="column" />
-          {meme && <MemeView width={width} height={height} image={image} handleImageChange={imageChange} handleClose={disableMeme} base64={b64} id={imageId}/>}
+          {!previewLoading && <LiveEffectChecks liveChange={handleLiveChange} feedback={liveEffect} className="column" />}
+          {meme && <MemeView width={width} height={height} image={image} handleImageChange={imageChange} handleClose={disableMeme} base64={b64} id={imageId} />}
         </div>
         <LiveEffects liveChange={handleLiveChange} reset={resetEffects} feedback={liveEffect} className="column is-one-quarter" />
-        <Filters url={image} handleImageChange={imageChange} />
+        <Filters url={image} handleImageChange={imageChange} handleIconChange={handleIconChange} setPreviewLoading={setPreviewLoading} />
       </div>
     </div>
   )
