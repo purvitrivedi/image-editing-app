@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import LoadingOverlay from 'react-loading-overlay'
 import Loader from 'react-spinners/PropagateLoader'
 
@@ -6,12 +6,12 @@ import { getThumbnails, previewFilter } from '../../lib/api'
 
 function Filters({ url, handleImageChange, handleIconChange, setPreviewLoading }) {
 
-  const [thumbnails, setThumbnails] = React.useState([])
-  const [requestPage, setRequestPage] = React.useState(1)
-  const [filterType, setFilterType] = React.useState('sketch')
-  const [loading, setLoading] = React.useState(false)
-  const [leftArrowDisabled, setLeftArrowDisabled] = React.useState(true)
-  const [rightArrowDisabled, setRightArrowDisabled] = React.useState(false)
+  const [thumbnails, setThumbnails] = useState([])
+  const [requestPage, setRequestPage] = useState(1)
+  const [filterType, setFilterType] = useState('sketch')
+  const [loading, setLoading] = useState(false)
+  const [leftArrowDisabled, setLeftArrowDisabled] = useState(true)
+  const [rightArrowDisabled, setRightArrowDisabled] = useState(false)
 
 
   const changePage = (event) => {
@@ -43,7 +43,7 @@ function Filters({ url, handleImageChange, handleIconChange, setPreviewLoading }
     console.log(event.target.value)
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     const sendThumbnailRequest = async () => {
       setLoading(true)
       try {
@@ -82,9 +82,16 @@ function Filters({ url, handleImageChange, handleIconChange, setPreviewLoading }
           </button>}
         {!loading && filterType !== 'emoji' && thumbnails.map(thumbnail => {
           return (
-            <img className="filter" src={thumbnail.image} alt={thumbnail.option} key={thumbnail.option} onClick={preview} />
+            <img 
+              className="filter" 
+              src={thumbnail.image} 
+              alt={thumbnail.option} 
+              key={thumbnail.option} 
+              onClick={preview} 
+            />
           )
         })}
+
         {!loading && filterType === 'emoji' && thumbnails.map(thumbnail => {
           return (
             <img
@@ -99,6 +106,7 @@ function Filters({ url, handleImageChange, handleIconChange, setPreviewLoading }
             />
           )
         })}
+
         {loading &&
           <LoadingOverlay
             className="loading"

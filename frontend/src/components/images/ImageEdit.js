@@ -130,6 +130,7 @@ function ImageEdit() {
   const resetEffects = () => {
     setliveEffect(defaultEffect)
     setUrl(image)
+    setImages([])
     setB64('')
     // setShowRevert(false)
   }
@@ -168,7 +169,7 @@ function ImageEdit() {
   return (
     <div className="ImageEdit">
       <div className="box columns is-multiline">
-        <div className="column is-full columns buttons">
+        <div className={showSave ? 'column is-full columns btn-editing' : 'column is-full columns buttons'}>
           {!showSave && <button className="btn-meme column is-three-quarter" onClick={enableMeme}>Make it a Meme</button>}
           {!showSave && showUndoSaveBtns && <button className="btn-reset column is-one-quarter" onClick={resetEffects}>Reset</button>}
           {!showSave && showUndoSaveBtns && <button className="button-process column is-one-quarter" onClick={() => {
@@ -177,11 +178,10 @@ function ImageEdit() {
           }}>Save Image
           </button>
           }
-          {/* <button className="button-process column is-one-quarter" onClick={() => {
-            handleSaveImage()
-            setShowSave(true)
-          }}>Save Image
-          </button> */}
+          {showSave && <button className="button-process column is-one-quarter" onClick={() => {
+            setShowSave(false)
+          }}>Get back to Edit
+          </button>}
         </div>
         <div className="edit-box column"
           style={{ width: width, height: height + 40 }}

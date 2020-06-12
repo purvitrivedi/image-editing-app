@@ -10,7 +10,7 @@ function MemeView({ handleImageChange, image, handleClose, width, height, base64
   }
 
   const sendPostRequest = async () => {
-    const text = `${topText}©π${bottomText}`
+    const text = `${topText.toUpperCase()}©π${bottomText.toUpperCase()}`
     let url
     if (base64) {
       url = `${id}&&${width}&&${height}&&${base64}`

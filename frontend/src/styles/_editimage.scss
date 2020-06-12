@@ -1,6 +1,25 @@
 .ImageEdit {
   font-family: "Helvetica Neue";
 
+  .btn-editing {
+    justify-content: space-between;
+    margin-top: -1.7em;
+    margin-bottom: -2em;
+    padding: 0em;
+    background-color: transparent;
+    button {
+      font-size: 12px;
+      border: none;
+      background-color: transparent;
+      border-radius: 5px;
+      font-weight: 800;
+      width: 200px;
+      height: 50px;
+      cursor: pointer;
+      outline: none !important;
+    }
+    }
+
   .buttons {
     justify-content: space-between;
     margin-top: -1.5em;
@@ -33,6 +52,7 @@
       100% {
         opacity: 100%;
       }
+
     }
     
     .btn-meme {
@@ -52,6 +72,7 @@
     text-align: center;
     justify-content: center;
     flex-wrap: wrap;
+    overflow: scroll;
 
     .edit-box {
       margin-left: 89px;
@@ -158,6 +179,8 @@
     }
   }
 }
+
+
 
 @media (max-height: 800px) {
   .section {
