@@ -16,7 +16,7 @@ export const postURL = ({ url, height, width }) => {
 
 //* get Single Image
 export const getSingleImage = imageId => {
-  return axios.get(`${baseUrl}/images/${imageId}`)
+  return axios.get(`${baseUrl}/images/${imageId}/`)
 }
 
 //* get thumbnails
