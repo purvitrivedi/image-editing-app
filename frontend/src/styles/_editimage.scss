@@ -74,11 +74,6 @@
         height: 45em;
       }
 
-      @media (max-width: 500px) {
-        flex-direction: column;
-        height: 35em;
-      }
-
       .image {
         align-self: center;
       }
@@ -212,11 +207,29 @@
 }
 
 @media (max-width: 500px) {
-  .edit-box {
-    canvas, .konvajs-content {
+  .equal-wh {
+    flex-direction: column;
+    height: 35em;
+    canvas,
+    .konvajs-content {
       width: 350px !important;
       height: 350px !important;
     }
+  }
+
+  .w-greater {
+    flex-direction: column;
+    height: 20em !important;
+    canvas,
+    .konvajs-content {
+      width: 350px !important;
+      height: 250px !important;
+    }
+  }
+
+  .h-greater {
+    flex-direction: column;
+    height: 38em !important;
   }
 
   .side-by-side {
@@ -252,11 +265,13 @@
 }
 
 @media (max-width: 350px) {
-
   .edit-box {
-    canvas, .konvajs-content {
-      width: 310px !important;
-      height: 310px !important;
+    .equal-wh {
+      canvas,
+      .konvajs-content {
+        width: 310px !important;
+        height: 310px !important;
+      }
     }
   }
   .side-by-side {

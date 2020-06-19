@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { getSingleImage } from '../../lib/api'
@@ -183,7 +184,8 @@ function ImageEdit() {
             }}>Get back to Edit
             </button>}
           </div>
-          <div className={showSave ? 'edit-box-save' : 'edit-box'}
+          <div
+            className={`${showSave ? 'edit-box-save' : 'edit-box'} ${width === height ? 'equal-wh' : width > height ? 'w-greater' : 'h-greater'}`}
             onDrop={event => {
               // register event position
               stageRef.current.setPointersPositions(event)
@@ -276,10 +278,10 @@ function ImageEdit() {
             {!showSave && <LiveEffects liveChange={handleLiveChange} reset={resetEffects} feedback={liveEffect} />}
             {!showSave && <Filters url={image} handleImageChange={imageChange} handleIconChange={handleIconChange} setPreviewLoading={setPreviewLoading} />}
           </div>
-          
+
         </div>
       </div>
-    </div>
+    </div >
   )
 }
 export default ImageEdit

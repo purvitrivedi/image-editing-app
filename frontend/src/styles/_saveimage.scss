@@ -133,32 +133,35 @@
   }
 }
 
-
 @media (max-width: 500px) {
-
-  canvas, .konvajs-content {
-    width: 350px !important;
-    height: 350px !important;
+  .equal-wh {
+  canvas,
+  .konvajs-content {
+  
+      width: 350px !important;
+      height: 350px !important;
+    }
   }
 
-  .btn-editing{
+  .btn-editing {
     text-align: center;
 
     button {
       width: 150px;
     }
   }
-      .save-options {
-        display: flex;
-        flex-direction: column;
-      }
-    }
+  .save-options {
+    display: flex;
+    flex-direction: column;
+  }
+}
 
-    @media (max-width: 350px) {
-
-      canvas, .konvajs-content {
-        width: 310px !important;
-        height: 310px !important;
-      }
+@media (max-width: 350px) {
+  .equal-wh {
+    canvas,
+    .konvajs-content {
+      width: 310px !important;
+      height: 310px !important;
     }
-    
+  }
+}
