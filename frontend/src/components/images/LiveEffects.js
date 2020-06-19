@@ -10,8 +10,8 @@ function LiveEffects({ liveChange, feedback, reset }) {
 
 
   return (
-    <div className="columns is-multiline live-effects-wrap">
-      <div className="live-effects column is-full">
+    <div className="live-effects-wrap">
+      <div className="live-effects">
         <div className="sliders">
           <div className="field">
             <input
@@ -118,9 +118,6 @@ function LiveEffects({ liveChange, feedback, reset }) {
             />
             <label className="label">Emboss Level</label>
           </div>
-          {/* <div className="field">
-            <button className="button-reset" onClick={reset}>Reset</button>
-          </div> */}
         </div>
       </div>
     </div>

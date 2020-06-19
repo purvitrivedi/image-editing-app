@@ -7,6 +7,12 @@
     -webkit-appearance: none;
     background-color:#9bc3cc41;
     border: 1px solid rgb(185, 185, 185);
+
+
+  @media (max-width: 400px) {
+    width: 80px;
+    margin: 0 10px;
+  }
   }
 
   input[type=range]:focus {

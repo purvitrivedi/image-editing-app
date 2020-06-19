@@ -1,75 +1,164 @@
-.SaveImage {
-  margin-left: 50px;
-  font-family: "Helvetica Neue";
+.edit-box-save {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 0;
+  height: 80vh;
+  align-self: center;
+  margin-top: 5em;
 
-  input {
-    border-radius: 5px;
+  @media (min-height: 1200px) {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .SaveImage {
+    margin-left: 50px;
     font-family: "Helvetica Neue";
-    font-size: 13px;
-    text-align: center;
-    width: 70%;
-    height: 40px;
-    border: 1px solid rgb(206, 192, 192);
-    animation: expand 3s;
-  }
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
+    input {
+      border-radius: 5px;
+      font-family: "Helvetica Neue";
+      font-size: 13px;
+      text-align: center;
+      width: 70%;
+      height: 40px;
+      border: 1px solid rgb(206, 192, 192);
+      animation: expand 3s;
+    }
 
+    label {
+      font-size: 20px;
+    }
 
-  label {
-    font-size: 20px;
-  }
+    button {
+      margin: 10px;
+      font-size: 14px;
+      border-radius: 5px;
+      text-align: center;
+      background-color: black;
+      color: white;
+      font-weight: 800;
+      width: 150px;
+      display: inline-block;
+      padding: 11px 12px;
+      cursor: pointer;
+      border: none;
+    }
 
-  button {
-    margin: 10px;
-    font-size: 14px;
-    border-radius: 5px;
-    text-align: center;
-    background-color: black;
-    color: white;
-    font-weight: 800;
-    width: 150px;
-    display: inline-block;
-    padding: 11px 12px;
-    cursor: pointer;
-    border: none;
-  }
+    .embed,
+    .share,
+    .download {
+      position: relative;
+      align-self: center;
+    }
 
-  .embed, .share, .download {
-    position: relative;
-    align-self: center;
-  }
+    .animate-this {
+      animation: expand 3s;
+    }
+    .button-animate {
+      animation: text-appear 2s;
+    }
+    .animate-button {
+      animation: text-appear-2 2s;
+    }
 
-  .animate-this{
-    animation: expand 3s;
-  }
-  .button-animate{
-    animation: text-appear 2s;
-  }
-  .animate-button{
-    animation: text-appear-2 2s;
-  }
+    @keyframes text-appear {
+      0% {
+        color: transparent;
+      }
+      100% {
+        color: white;
+      }
+    }
 
-  @keyframes text-appear {
-    0%   {color: transparent;}
-    100% {color: white;} 
-  }
-  
-  @keyframes text-appear-2 {
-    0%   {color: transparent;}
-    100% {color: white;} 
-  }
+    @keyframes text-appear-2 {
+      0% {
+        color: transparent;
+      }
+      100% {
+        color: white;
+      }
+    }
 
-@keyframes expand {
-  0%   {opacity: 0; width: 10%;}
-  100% {opacity: 1; width: 70%;} 
-}
-
+    @keyframes expand {
+      0% {
+        opacity: 0;
+        width: 10%;
+      }
+      100% {
+        opacity: 1;
+        width: 70%;
+      }
+    }
+  }
 }
 
 .loading {
-margin:20px 0px;
+  margin: 20px 0px;
 }
+
+.btn-editing {
+  text-align: left;
+
+  button {
+    font-size: 12px;
+    border: none;
+    background-color: transparent;
+    border-radius: 5px;
+    font-weight: 800;
+    width: 200px;
+    height: 50px;
+    cursor: pointer;
+    outline: none !important;
+
+    @media (min-height: 1200px) {
+      height: 80px;
+      font-size: 20px;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .edit-box-save {
+    flex-direction: column;
+    align-items: center;
+    .SaveImage {
+      margin-left: 0px;
+
+      .save-options {
+        display: flex;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 500px) {
+
+  canvas, .konvajs-content {
+    width: 350px !important;
+    height: 350px !important;
+  }
+
+  .btn-editing{
+    text-align: center;
+
+    button {
+      width: 150px;
+    }
+  }
+      .save-options {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 350px) {
+
+      canvas, .konvajs-content {
+        width: 310px !important;
+        height: 310px !important;
+      }
+    }
+    

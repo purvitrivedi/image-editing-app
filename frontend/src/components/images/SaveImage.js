@@ -64,7 +64,7 @@ function SaveImage({ imageData, height }) {
   console.log(embedCopySuccess)
   return (
     <div className="SaveImage" style={{ height: height }}>
-      <div className="columns is-multiline">
+      <div className="columns is-multiline save-options">
         <div className="field column is-full embed">
           <label className="label">Embed</label>
           {!loading && <input className="animate-this" readOnly ref={embedRef} type="text" name="embed" value={`<img src="${image}" title="Edited with Filtr" alt="Edit your images with Filtr />`} />}

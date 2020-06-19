@@ -1,31 +1,13 @@
 .ImageEdit {
   font-family: "Helvetica Neue";
 
-  .btn-editing {
-    justify-content: space-between;
-    margin-top: -1.7em;
-    margin-bottom: -2em;
-    padding: 0em;
-    background-color: transparent;
-    button {
-      font-size: 12px;
-      border: none;
-      background-color: transparent;
-      border-radius: 5px;
-      font-weight: 800;
-      width: 200px;
-      height: 50px;
-      cursor: pointer;
-      outline: none !important;
-    }
-    }
-
   .buttons {
     justify-content: space-between;
-    margin-top: -1.5em;
-    margin-bottom: -2em;
-    padding: 0em;
-    background-color: transparent;
+    margin-bottom: 0em;
+
+    @media (max-width: 500px) {
+      justify-content: center;
+    }
     .button-process,
     .btn-meme,
     .btn-reset {
@@ -45,6 +27,10 @@
       animation: appear 2s;
     }
 
+    .btn-meme {
+      flex-grow: 2;
+    }
+
     @keyframes appear {
       0% {
         opacity: 0%;
@@ -52,9 +38,8 @@
       100% {
         opacity: 100%;
       }
-
     }
-    
+
     .btn-meme {
       padding-left: 40px;
       background-color: transparent;
@@ -70,18 +55,39 @@
   .box {
     height: 90vh;
     text-align: center;
-    justify-content: center;
-    flex-wrap: wrap;
     overflow: scroll;
 
+    .image-filter-box {
+      display: flex;
+      flex-direction: column;
+    }
+
     .edit-box {
-      margin-left: 89px;
       display: flex;
       justify-content: center;
-      flex-grow: 0;
+      height: 33em;
+      @media (max-width: 800px) {
+        align-items: center;
+      }
+
+      @media (min-height: 1200px) {
+        height: 45em;
+      }
+
+      @media (max-width: 500px) {
+        flex-direction: column;
+        height: 35em;
+      }
+
+      .image {
+        align-self: center;
+      }
 
       .checkboxes {
         align-self: center;
+        @media (max-width: 500px) {
+          display: flex;
+        }
 
         label {
           font-size: 13px;
@@ -91,7 +97,6 @@
     .live-effects-wrap {
       width: 100%;
       align-content: center;
-      margin-bottom: -1em;
 
       .live-effects {
         align-self: center;
@@ -123,34 +128,16 @@
     }
   }
   section {
-    padding: 0rem 1.5rem;
-    // border: 1px solid rgba(73, 72, 72, 0.192);
-    width: 70%;
-    .filter-type {
-      justify-content: center;
-      margin-top: 0.5rem;
-      button {
-        margin: 5px;
-        text-align: center;
-        border: none;
-        background-color: transparent;
-        font-size: 15px;
-        outline: none;
-        cursor: pointer;
-      }
-      .type-selected {
-        text-decoration: underline;
-        font-weight: bold;
-      }
-    }
+    padding: 0rem;
 
     .filters {
-      width: 100%;
-      height: 120px;
-      margin-bottom: 0px;
-      border-radius: 10px;
       display: flex;
       justify-content: center;
+      height: 100px;
+
+      @media (min-height: 1300px) {
+        height: 8em;
+      }
 
       .arrow-disabled {
         color: rgb(207, 207, 207);
@@ -177,97 +164,126 @@
         outline: none;
       }
     }
-  }
-}
 
-
-
-@media (max-height: 800px) {
-  .section {
-    padding: 0rem 1.5rem;
+    .filter-type {
+      justify-content: center;
+      button {
+        margin: 5px;
+        text-align: center;
+        border: none;
+        background-color: transparent;
+        font-size: 1em;
+        outline: none;
+        cursor: pointer;
+      }
+      .type-selected {
+        text-decoration: underline;
+        font-weight: bold;
+      }
+    }
   }
-
-  .filter {
-    width: 80px !important;
-    height: 80px !important;
-  }
-}
-
-@media (max-width: 1024px) {
-  .section {
-    padding: 0rem 1.5rem;
-    height: 150px;
-  }
-  .filter {
-    width: 75px !important;
-    height: 75px !important;
-  }
-  .button-process {
-    width: 300px !important;
-    height: 50px;
-  }
-}
-
-@media (max-width: 800px) {
-  .filter-type {
-    margin-left: 14.25rem;
-    margin-right: -0.75rem;
-    margin-top: 1.25rem;
-  }
-
-  .section {
-    padding: 0rem 1.5rem;
-    height: 250px;
-  }
-  .filters {
-    flex-wrap: wrap;
-  }
-}
-
-@media (max-width: 500px) {
-  .box {
-    overflow: scroll;
-  }
-  .filter-type {
-    margin-left: 1rem;
-    margin-right: -0.75rem;
-    margin-top: 1.25rem;
-    text-align: center;
-  }
-  .section {
-    height: 650px;
-  }
-  .button-process {
-    width: 200px !important;
-  }
-
-  .ImageEdit .box .editable-img img {
-    height: 80%;
-  }
-}
-
-.button-reset {
-  // border: none;
-  // background-color: rgb(251, 245, 185);
-  // border-radius: 5px;
-  // font-weight: 600;
-  // cursor: pointer;
-  // outline: none;
-  // font-size: 12px;
-
-  border-radius: 5px;
-  text-align: center;
-  border: none;
-  background-color: black;
-  color: white;
-  font-weight: 800;
-  width: 70px;
-  height: 40px;
-  display: inline-block;
-  padding: 11px 12px;
 }
 
 .loading-image {
   height: 500px;
   vertical-align: middle;
+}
+
+@media (max-width: 800px) {
+  .side-by-side {
+    display: flex;
+    .section {
+      .filters {
+        flex-wrap: wrap;
+        height: 15em;
+        .filter {
+          width: 70px;
+          height: 70px;
+          margin: 0em 0.3em;
+        }
+      }
+    }
+
+    .sliders {
+      height: 20em;
+      overflow: scroll;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .edit-box {
+    canvas, .konvajs-content {
+      width: 350px !important;
+      height: 350px !important;
+    }
+  }
+
+  .side-by-side {
+    .section {
+      .filters {
+        .filter {
+          width: 50px;
+          height: 50px;
+        }
+      }
+      .filter-type {
+        font-size: 12px;
+      }
+    }
+  }
+
+  .ImageEdit {
+    .buttons {
+      margin-bottom: 1em;
+
+      .btn-reset {
+        width: 100px;
+      }
+      .btn-meme {
+        width: 100px;
+      }
+
+      .button-process {
+        width: 100px;
+      }
+    }
+  }
+}
+
+@media (max-width: 350px) {
+
+  .edit-box {
+    canvas, .konvajs-content {
+      width: 310px !important;
+      height: 310px !important;
+    }
+  }
+  .side-by-side {
+    .sliders {
+      height: 24em;
+    }
+    .section {
+      .filters {
+        height: 21em;
+      }
+    }
+  }
+
+  .ImageEdit {
+    .buttons {
+      margin-bottom: 1em;
+
+      .btn-reset {
+        width: 80px;
+      }
+      .btn-meme {
+        width: 80px;
+      }
+
+      .button-process {
+        width: 80px;
+      }
+    }
+  }
 }

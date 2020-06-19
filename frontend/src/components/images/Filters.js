@@ -135,7 +135,7 @@ function Filters({ url, handleImageChange, handleIconChange, setPreviewLoading }
             <i className="fas fa-chevron-right" value="right"></i>
           </button>}
       </div>
-      <div className="columns filter-type">
+      <div className="filter-type">
         <button className={filterType === 'sketch' ? 'type-selected' : ''} onClick={changeFilterType} value="sketch">Tint</button>
         <button className={filterType === 'histogram' ? 'type-selected' : ''} onClick={changeFilterType} value="histogram">Histogram</button>
         <button className={filterType === 'collage' ? 'type-selected' : ''} onClick={changeFilterType} value="collage">Artist Brush</button>
