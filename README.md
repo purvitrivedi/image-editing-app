@@ -1,8 +1,9 @@
 # General Assembly Project 4: Filtr
 
 **Project Members**:
-* [George Jones] (https://github.com/Jompra)
-* [Purvi Trivedi] (https://github.com/purvitrivedi)
+
+* George Jones: https://github.com/Jompra
+* Purvi Trivedi https://github.com/purvitrivedi
 
 **_Timeframe_**
 
