@@ -11,7 +11,7 @@
 
 ## Goal:
 
-To design a full-stack React app using Python, Django and PostgreSQL.
+Design a full-stack React app using Python, Django and PostgreSQL.
 
 ## Technologies Used
 
@@ -48,9 +48,9 @@ https://github.com/purvitrivedi/image-editing-app
 
 - Clone or download the repo
 - <code>pipenv</code> to install Python packages
-- <code> python manage.py loaddata images/seeds.json</code>to create initial data for the database
-- <code>cd frontend</code> to go to frontend directory
-- <code>npm i</code> to install frontend packages
+- <code> python manage.py loaddata images/seeds.json</code>to load filters from the database
+- <code>cd frontend</code> to go to the frontend directory
+- <code>npm i</code> to install frontend dependencies
 - <code>npm run build</code>
 - go back to main directory and run <code>python manage.py runserver</code> to start the app
 
@@ -58,11 +58,11 @@ https://github.com/purvitrivedi/image-editing-app
 
 ## Idea
 
-For my final project, I wanted to push myself and build something different from Project 3's [Hikr](https://hikrr.herokuapp.com/) which was a CRUD app.
+For my final project, I wanted to push myself and build something different from Project 3's [Hikr](https://hikrr.herokuapp.com/), which was essentially a CRUD app.
 
-When George shared the idea of making an image-editing app, I was immediately interested in pairing up as it was the perfect opportunity to experiment learn something new.
+When George shared the idea of making an image-editing app, I was immediately interested in pairing up as it was the perfect opportunity to experiment & learn something new.
 
-George had already worked out that we could use base64 to quickly send images between frontend and backend. We then created a flowchart to outline the full app journey between the Frontend and the Backend:
+George had already worked out that we could use base64 to quickly send images between the frontend and backend. We then created a flowchart to outline the full app journey:
 
 ![Filtr FlowChart](frontend/src/assets/flowchart.png)
 
@@ -70,7 +70,7 @@ George had already worked out that we could use base64 to quickly send images be
 
 Next up, we needed to expirement with image filters using Skicit-image and Pillow. We used Google Collabotary to experiment with filters in a shared document:
 
-Below are two filters we expriemented with, explained step by step:
+Below are two filters, explained step by step:
 
 **Tint Filter using Skicit-Image**:
 
@@ -81,14 +81,14 @@ Below are two filters we expriemented with, explained step by step:
     image = 'https://images.unsplash.com/photo-1593720737821-ce72f91b3db8?    ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80'
 
 
-    color_space = 'pink' // select the filter you would like to apply
+    color_space = 'pink' // select the filter tint you would like to apply
 
 
-    // Turns the image into a 3D array of pixels. Takes the RGB  data from the array, make an average and turn it into a grayscale image.
+    // Turns the image into a 3D array of pixels. Takes the RGB data from the array, makes an average and turns it into a grayscale image.
 
     image = rgb2gray(io.imread(image))
 
-    // Gaussian filter helps reduce noise and applies slight blurring to keep the image quality high
+    // Gaussian filter helps reduce noise to keep the image quality high
 
     edge = filters.gaussian(image, sigma=0.6)
 
@@ -123,6 +123,7 @@ Examples:
     base = im.convert('RGBA')
 
     // make a blank image for the text, initialized to transparent text color
+
     txt = Image.new('RGBA', base.size)
 
     // get a font
@@ -151,24 +152,23 @@ The **Artist Brush** filter was made using scikit-image image segmentation and s
 
 <img src="frontend/src/assets/brush.png" alt="artist brush filter" width="500px">
 
-## App Layout
+## Wireframes
 
-We had a simple 3-page layout for when user Uploads Image, plays around with filters and then saves it.
+We decided to go for a simple 3-page layout: when the user uploads an image, plays around with filters and then saves it.
 
 <img src="frontend/src/assets/miro.png" alt="Miro" width="600px">
 
-Our **MVP** was to ensure our there was smooth exchange of image data between the frontend and the backend. If we were able to reach that goal quickly, we would add CSS filters.
+Our **MVP** was to ensure that there is a smooth exchange of image data between the frontend and the backend. If we were able to reach that goal quickly, we would add CSS filters.
 
 ## Backend
 
-On the backend we have three models: Image, Filter and User. We created the user model as we intended to have login features, however we later decided that this will be added in the future.
+On the backend we have three models: Image, Filter and User. We created the user model as we intended to have login features, however, we later decided that this isn't a necessary featured and can be added in the future.
 
 ### Image & Filter model, view, urls
-We have two models: Image and Filter. 
 
 The Filter model was created to create the database of filter options from the seeds file.
 
-The Image Model was the main model towards applying filters and returning the b64 back to the frontend. We send the width and height from the frontend as well, so images are returned with the exact dimensions:
+The Image Model was the main model. It was use to apply filters and return the base64 image back to the frontend. We send the width and height from the frontend as well, so images are returned with the exact dimensions:
     
     class Image(models.Model):
         url = models.TextField()
@@ -183,12 +183,11 @@ The Image Model was the main model towards applying filters and returning the b6
     
 
 
-The views.py and urls.py has 3 main requests: 
+The views.py and urls.py have 3 main requests: 
 
-* path '': GET to see all Images Uploaded, POST to upload a new image and get a URL/B64 in response
+* path '': GET to see all Images Uploaded, POST to upload a new image and get a URL/base64 in response
 * path'<int:pk>/': GET a single Image
 * path'thumbnails/': GET a list of thumbnails
-
 
 Image POST request:
 
@@ -198,7 +197,7 @@ Thumbnails GET Request:
 
 <img src="frontend/src/assets/thumbnails.png" alt="thumbnails flowchart" width= "800px">
 
-For example, for the tint filter:
+Thumbnails example for the tint filter:
 
     def get_sketch_thumbs(img, page):
 
@@ -220,14 +219,14 @@ For example, for the tint filter:
 
 ## Frontend
 
-The Frontend was built using React Hooks and for this project, we began working on it at the same time as the backend. This way we could make tweaks to the Backend simultaneously, if needed. For example, we wouldn't have realised that we needed to send the width and height of the image to the Backend, if we hadn't seen the difference on the page.
+The Frontend was built using React Hooks and for this project, we began working on it at the same time as the backend. This way we could make tweaks to the backend, if needed. For example, we wouldn't have realised that we needed to send the width and height of the image to the Backend, if we hadn't seen the difference on the page.
 
-We wanted the styling of Filtr to be extremely slick and as the last project, used a lot of condition rendering to update the "Edit page" instantly. Before and after images of styling:
+We wanted the styling of Filtr to be extremely slick and like the last project, we used a lot of condition rendering to update the "Edit page" instantly. Before and after images of styling the Edit page:
 
 <img src="frontend/src/assets/edit-before.png" alt="edit styling early" width="500px">
 <img src="frontend/src/assets/edit.png" alt="edit styling final" width="600px">
 
-We also used [Konva](https://konvajs.org/) to apply CSS filters and Emoji frop features. The below example is a great example of how we used Konva and conditional rendering on this page:
+We also used [Konva](https://konvajs.org/) to apply CSS filters and Emoji drop features. The below code is a typical example of how we used Konva and conditional rendering on this page:
 
       <Stage width={width} height={height} ref={stageRef} id="stage">
         <Layer>
@@ -288,8 +287,17 @@ We also used [Konva](https://konvajs.org/) to apply CSS filters and Emoji frop f
 
 **Styling**: I LOVE the styling for this website. Even though the little touches (like the filter animation on homepage) are time consuming -- It's satisfying and worth it to present a well-designed app!
 
+
+
+## Key Learnings
+
+* Python Fundamentals: As this was my first project using Python, I had the opportunity to really solidify my understanding in it. 
+* Canvas: An extremely powerful JS tool that I had never used before. I look forward to playing around with it more in the future.
+* React Hooks: After making two React apps, React Hooks introduced a new way of working. I really enjoyed using it and will continue to use it in future projects.
+
+
 ## Future Improvements
 
 **Histogram Filter**: Our histogram filter needs work as it's quality is completely dependent on the image uploaded by the user.
 
-**User Login & Profile**: The backend for this is all ready, so we could easily make an instagram or pinterest like profile page.
+**User Login & Profile**: The backend for this is all ready, so we could easily make an Instagram or Pinterest like profile page.
