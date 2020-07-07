@@ -161,9 +161,9 @@ Our **MVP** was to ensure our there was smooth exchange of image data between th
 
 ## Backend
 
-On the backend we have two models: Image and User. We created the user model as we intended to add login features, however we later decided that this will be added in the future.
+On the backend we have three models: Image, Filter and User. We created the user model as we intended to have login features, however we later decided that this will be added in the future.
 
-### Image model, view, urls
+### Image & Filter model, view, urls
 We have two models: Image and Filter. 
 
 The Filter model was created to create the database of filter options from the seeds file.
