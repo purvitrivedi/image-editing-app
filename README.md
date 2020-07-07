@@ -163,7 +163,7 @@ Our **MVP** was to ensure that there is a smooth exchange of image data between 
 
 George and I used a trello board to divide up tasks between us:
 
-<img src="frontend/src/assets/trello.png" alt="Trello" width="600px">
+<img src="frontend/src/assets/trello.png" alt="Trello">
 
 George took ownership of:
 
