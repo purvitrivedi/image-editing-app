@@ -34,7 +34,7 @@ Design a full-stack React app using Python, Django and PostgreSQL.
 
 # Filtr
 
-An image editing app where a user can upload an image and add tint, historgram and artist brush image filters. Users can also make use of CSS filters, add emojis and create memes.
+An image editing app where a user can upload an image and add tint, histrogram and artist brush image filters. Users can also make use of CSS filters, add emojis and create memes.
 
 ![Filtr Home Page](frontend/src/assets/filtr-home.png)
 
@@ -57,7 +57,6 @@ https://github.com/purvitrivedi/image-editing-app
 # Process
 
 ## Idea
-
 For my final project, I wanted to push myself and build something different from Project 3's [Hikr](https://hikrr.herokuapp.com/), which was essentially a CRUD app.
 
 When George shared the idea of making an image-editing app, I was immediately interested in pairing up as it was the perfect opportunity to experiment & learn something new.
@@ -68,7 +67,7 @@ George had already worked out that we could use base64 to quickly send images be
 
 ## Experiments
 
-Next up, we needed to expirement with image filters using Skicit-image and Pillow. We used Google Collabotary to experiment with filters in a shared document:
+Next up, we needed to experiment with image filters using Skicit-image and Pillow. We used Google Collabotary to experiment with filters in a shared document:
 
 Below are two filters, explained step by step:
 
@@ -160,13 +159,35 @@ We decided to go for a simple 3-page layout: when the user uploads an image, pla
 
 Our **MVP** was to ensure that there is a smooth exchange of image data between the frontend and the backend. If we were able to reach that goal quickly, we would add CSS filters.
 
+### Split of work
+
+George and I used a trello board to divide up tasks between us:
+
+<img src="frontend/src/assets/trello.png" alt="Trello" width="600px">
+
+George took ownership of:
+
+* Proof of Concept for: Tint, Histogram, Artish Brush filters 
+* Image model routing
+* Ensuring text on memes were centered and sized depending on user's input.
+* Thumbnail generation
+* CSS + Konva Filters.
+
+I took ownership of:
+
+* Proof of Concept for Meme Filter
+* Selecting filter options and quality control for Tint, Histogram & Artist Brush filters
+* Ensuring users are able to memify an image with a filter on it
+* Front-end styling for all pages
+* Resetting filters & hover effect.
+
+We pair-coded on "Save Image" feature and anytime we needed to talk through a challenge or fix bugs.
+
 ## Backend
 
-On the backend we have three models: Image, Filter and User. We created the user model as we intended to have login features, however, we later decided that this isn't a necessary featured and can be added in the future.
+On the backend, we have three models: Image, Filter and User. George started working on structure of the Image Model, while I worked on the User Model.
 
 ### Image & Filter model, view, urls
-
-The Filter model was created to create the database of filter options from the seeds file.
 
 The Image Model was the main model. It was use to apply filters and return the base64 image back to the frontend. We send the width and height from the frontend as well, so images are returned with the exact dimensions:
     
@@ -180,8 +201,9 @@ The Image Model was the main model. It was use to apply filters and return the b
     
         def __str__(self):
             return f'{self.url}'
-    
 
+    
+The Filter model was created to create the database of filter options from the seeds file.
 
 The views.py and urls.py have 3 main requests: 
 
@@ -219,7 +241,7 @@ Thumbnails example for the tint filter:
 
 ## Frontend
 
-The Frontend was built using React Hooks and for this project, we began working on it at the same time as the backend. This way we could make tweaks to the backend, if needed. For example, we wouldn't have realised that we needed to send the width and height of the image to the Backend, if we hadn't seen the difference on the page.
+The Frontend was built using React Hooks and for this project, we began working on it at the same time as the backend. This way we could make tweaks to the backend if needed. For example, we wouldn't have realised that we needed to send the width and height of the image to the Backend if we hadn't seen the difference on the page.
 
 We wanted the styling of Filtr to be extremely slick and like the last project, we used a lot of condition rendering to update the "Edit page" instantly. Before and after images of styling the Edit page:
 
@@ -272,32 +294,33 @@ We also used [Konva](https://konvajs.org/) to apply CSS filters and Emoji drop f
           </Layer>
       </Stage>
 
+
 ## Challenges
 
-**Learning about image-editing**: This is a massive topic on its own and one of the tools we used (skicit-image) is typically used by researchers and microscopists. For this reason there was a lot of trial and error of settings, documentation reading and stack overflow help that assisted us in getting the right filters.
+**Learning about image-editing**: This is a massive topic on its own and one of the tools we used (skicit-image) is typically used by researchers and microscopists. For this reason, there was a lot of trial and error when creating filter settings, documentation reading and stack overflow help that assisted us in getting the right filters.
 
-**Image Size and quality**: This is something we had not considered during the intial plan -- and a good part of day three and four were spend on ensuring we don't compromise on the quality. The Gaussian filter helped reduce noice on the Tint filter, however we still haven't found the answer for Histogram filter.
+**Image Size and quality**: This is something we had not considered during the initial plan -- and a good part of day three and four were spent on ensuring we don't compromise on the quality. The Gaussian filter helped reduce noise on the Tint filter, however, we still haven't found the answer for Histogram filter.
 
 
 ## Wins
 
-**TeamWork**: George and I worked extremely well for this project. His experience in Python and my passion for UX helped us make a well-functioning and beautiful product. We organised ourselves using a trello board with ideas split between "must do, should do and can do" for Front and Back end.
+**TeamWork**: George and I worked extremely well for this project. His experience in Python and my passion for UX helped us make a well-functioning and beautiful product. We organised ourselves using a Trello board with tasks split between "to do, in progress and done" for Front and Back end.
 
 **Artist Brush, Meme Filter & CSS filters**: I'm particularly happy with how well these filters turned out. Artist brush is extremely creative + Meme and CSS Filters give quick and fun results!
 
-**Styling**: I LOVE the styling for this website. Even though the little touches (like the filter animation on homepage) are time consuming -- It's satisfying and worth it to present a well-designed app!
+**Styling**: I LOVE the styling for this website. Even though the little touches (like the filter animation on the homepage) are time-consuming -- It's satisfying and worth it to present a well-designed app!
 
 
 
 ## Key Learnings
 
-* Python Fundamentals: As this was my first project using Python, I had the opportunity to really solidify my understanding in it. 
+* Python Fundamentals: As this was my first project using Python, I had the opportunity to solidify my understanding of it. 
 * Canvas: An extremely powerful JS tool that I had never used before. I look forward to playing around with it more in the future.
-* React Hooks: After making two React apps, React Hooks introduced a new way of working. I really enjoyed using it and will continue to use it in future projects.
+* React Hooks: After making two React apps, React Hooks introduced a new way of working. I enjoyed using it and will continue to use it in future projects.
 
 
 ## Future Improvements
 
-**Histogram Filter**: Our histogram filter needs work as it's quality is completely dependent on the image uploaded by the user.
+**Histogram Filter**: Our histogram filter needs work, as it's quality is completely dependent on the image uploaded by the user.
 
 **User Login & Profile**: The backend for this is all ready, so we could easily make an Instagram or Pinterest like profile page.
