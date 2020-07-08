@@ -73,37 +73,40 @@ Below are two filters, explained step by step:
 
 **Tint Filter using Skicit-Image**:
 
-    from skimage.color import rgb2gray
-    from skimage import filters, io, exposure
-    from matplotlib import pyplot as plt
+```python
 
-    image = 'https://images.unsplash.com/photo-1593720737821-ce72f91b3db8?    ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80'
-
-
-    color_space = 'pink' // select the filter tint you would like to apply
+from skimage.color import rgb2gray
+from skimage import filters, io, exposure
+from matplotlib import pyplot as pl
+image = 'https://images.unsplash.com/photo-1593720737821-ce72f91b3db8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80'
 
 
-    // Turns the image into a 3D array of pixels. Takes the RGB data from the array, makes an average and turns it into a grayscale image.
+color_space = 'pink' # select the filter tint you would like to apply
 
-    image = rgb2gray(io.imread(image))
 
-    // Gaussian filter helps reduce noise to keep the image quality high
+# Turns the image into a 3D array of pixels. Takes the RGB data from the array, makes an average and turns it into a grayscale image.
 
-    edge = filters.gaussian(image, sigma=0.6)
+image = rgb2gray(io.imread(image))
 
-    // Plot converts 3D array of pixels into an image a human can see and enjoy.
+# Gaussian filter helps reduce noise to keep the image quality high
 
-    fig, axes = plt.subplots(ncols=1, sharex=True, sharey=True, figsize=(12, 12))
+edge = filters.gaussian(image, sigma=0.6)
 
-    axes.imshow(edge, cmap=color_space) //Then apply filter, save figure  with a color space.
+# Plot converts 3D array of pixels into an image a human can see and enjoy.
 
-    axes.axis('off') // Remove the plot axis
+fig, axes = plt.subplots(ncols=1, sharex=True, sharey=True, figsize=(12, 12))
 
-    // Save it as a PNG
+axes.imshow(edge, cmap=color_space) # Then apply filter, save figure  with a color space.
 
-    output_filename = 'test'
-    plt.savefig(f'{output_filename}.png', bbox_inches='tight', pad_inches =     0)
-    im.save(f'{output_filename}.png')
+axes.axis('off') # Remove the plot axis
+
+# Save it as a PNG
+
+output_filename = 'test'
+plt.savefig(f'{output_filename}.png', bbox_inches='tight', pad_inches = 0)
+im.save(f'{output_filename}.png')
+
+```
 
 Examples:
 
@@ -111,39 +114,43 @@ Examples:
 
 **Meme Filter using Pillow**:
 
-    from PIL import Image, ImageDraw, ImageFilter, ImageFont
-    import requests
-    from io import BytesIO
-    from skimage import io
+```python
 
-    // get an image
-    response = requests.get('https://imgflip.com/s/meme/Success-Kid.jpg')
-    im = Image.open(BytesIO(response.content))
-    base = im.convert('RGBA')
+from PIL import Image, ImageDraw, ImageFilter, ImageFont
+import requests
+from io import BytesIO
+from skimage import io
 
-    // make a blank image for the text, initialized to transparent text color
+# get an image
+response = requests.get('https://imgflip.com/s/meme/Success-Kid.jpg')
+im = Image.open(BytesIO(response.content))
+base = im.convert('RGBA')
 
-    txt = Image.new('RGBA', base.size)
+# make a blank image for the text, initialized to transparent text color
 
-    // get a font
-    msg_top="FINALLY REALIZED"
-    msg_bottom="THIS KID IS EATING SAND"
-    fnt_top = ImageFont.truetype('impact.ttf', 60)
-    fnt_btm = ImageFont.truetype('impact.ttf', 40)
+txt = Image.new('RGBA', base.size)
 
-    // get a drawing context
-    d = ImageDraw.Draw(txt)
-    w, h = d.textsize(msg_top, font=fnt_top)
-    w2, h2 = d.textsize(msg_bottom, font=fnt_btm)
+# get a font
+msg_top="FINALLY REALIZED"
+msg_bottom="THIS KID IS EATING SAND"
+fnt_top = ImageFont.truetype('impact.ttf', 60)
+fnt_btm = ImageFont.truetype('impact.ttf', 40)
+
+# get a drawing context
+d = ImageDraw.Draw(txt)
+w, h = d.textsize(msg_top, font=fnt_top)
+w2, h2 = d.textsize(msg_bottom, font=fnt_btm)
 
 
-    // draw text
-    d.text(((base.size[0]-w)/2,base.size[1]*0.02), msg_top, font=fnt_top, fill=(255,255,255))
-    d.text(((base.size[0]-w)/2,base.size[1]*0.82), msg_bottom, font=fnt_btm, fill=(255,255,255))
+# draw text
+d.text(((base.size[0]-w)/2,base.size[1]*0.02), msg_top, font=fnt_top, fill=(255,255,255))
+d.text(((base.size[0]-w)/2,base.size[1]*0.82), msg_bottom, font=fnt_btm, fill=(255,255,255))
 
-    // save image
-    out = Image.alpha_composite(base, txt)
-    out.save('meme.png')
+# save image
+out = Image.alpha_composite(base, txt)
+out.save('meme.png')
+
+```
 
 <img src="frontend/src/assets/meme.png" alt="meme filter" width="500px">
 
