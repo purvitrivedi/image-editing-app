@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@fortawesome/react-fontawesome": "^0.1.10",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bulma": "^0.8.2",
     "eslint-plugin-react": "^7.20.0",
     "face-api.js": "^0.22.2",
